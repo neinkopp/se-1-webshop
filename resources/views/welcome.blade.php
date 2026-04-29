@@ -22,10 +22,10 @@
             <h1 class="text-2xl font-bold text-indigo-600">ShopWave</h1>
 
             <nav class="space-x-6 hidden md:block">
-                <a href="#" class="hover:text-indigo-600">Home</a>
-                <a href="#" class="hover:text-indigo-600">Products</a>
-                <a href="#" class="hover:text-indigo-600">About</a>
-                <a href="#" class="hover:text-indigo-600">Contact</a>
+                <x-link>Home</x-link>
+                <x-link>Products</x-link>
+                <x-link>About</x-link>
+                <x-link>Contact</x-link>
             </nav>
 
             <a href="#" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
