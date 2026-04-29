@@ -70,10 +70,9 @@
                             <div class="flex justify-between items-center">
                                 <span class="text-indigo-600 font-bold text-lg">${{ rand(10,100) }},{{ rand(0,9) }}{{ rand(0,9) }}</span>
 
-                                <a href="#"
-                                   class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
-                                    Buy
-                                </a>
+                                <x-button>
+                                    Buy me
+                                </x-button>
                             </div>
                         </div>
                     </div>
