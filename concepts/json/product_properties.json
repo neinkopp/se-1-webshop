@@ -1,0 +1,25 @@
+{
+  "properties": {
+    "color": [
+      {
+        "displayName": "Olivgrün",
+        "value": "#123456",
+        "image_storage_key": "789acba39a8c377",
+        "externalId": "asduashkd"
+      },
+      {
+        "displayName": "Blau",
+        "value": "#123456",
+        "image_storage_key": "789acba39a8c377",
+        "externalId": "asduashkd"
+      }
+    ],
+    "size": ["XS", "XL", "XXL"],
+    "shape": [
+      {
+        "displayName": "Dreieckig"
+      }
+    ]
+  },
+  "combinations": {}
+}

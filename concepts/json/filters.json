@@ -1,0 +1,16 @@
+{
+  "filters": {
+    "color": {
+      "displayName": "Farbe",
+      "type": "color"
+    },
+    "size": {
+      "displayName": "Größe",
+      "type": "select"
+    },
+    "shape": {
+      "displayName": "Form",
+      "type": "select"
+    }
+  }
+}
