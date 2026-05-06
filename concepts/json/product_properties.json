@@ -1,16 +1,29 @@
 {
+  "default_picures": [
+    {
+      "picture_storage_key": "a3f86374a6463"
+    }
+  ],
   "properties": {
     "color": [
       {
         "displayName": "Olivgrün",
         "value": "#123456",
-        "image_storage_key": "789acba39a8c377",
+        "pictures": [
+          {
+            "picture_storage_key": "789acba39a8c377"
+          }
+        ],
         "externalId": "asduashkd"
       },
       {
         "displayName": "Blau",
         "value": "#123456",
-        "image_storage_key": "789acba39a8c377",
+        "pictures": [
+          {
+            "picture_storage_key": "789acba39a8c377"
+          }
+        ],
         "externalId": "asduashkd"
       }
     ],
@@ -20,6 +33,5 @@
         "displayName": "Dreieckig"
       }
     ]
-  },
-  "combinations": {}
+  }
 }
