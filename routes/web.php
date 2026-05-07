@@ -1,43 +1,12 @@
 <?php
 
+use App\Http\Controllers\ProductListController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Product;
 
-Route::get('/', function () {
-    
-    $products = [
-        [
-            'productHandle' => 'mockup_product_1',
-            'productDisplayName' => 'Mertens\'s Sack',
-            'productDisplayPrice' => rand(0,9).rand(0,9).','.rand(0,9).rand(0,9),
-            'productImagePath' => 'resources/images/mockup_product_1.png',
-        ],
-        [
-            'productHandle' => 'mockup_product_2',
-            'productDisplayName' => 'Mertens\'s T-Shirt mit extra Ehre',
-            'productDisplayPrice' => rand(0,9).rand(0,9).','.rand(0,9).rand(0,9),
-            'productImagePath' => 'resources/images/mockup_product_2.png',
-        ],
-        [
-            'productHandle' => 'mockup_product_3',
-            'productDisplayName' => 'Magischer Teppich des Mertens',
-            'productDisplayPrice' => rand(0,9).rand(0,9).','.rand(0,9).rand(0,9),
-            'productImagePath' => 'resources/images/mockup_product_3.png',
-        ],
-        [
-            'productHandle' => 'mockup_product_4',
-            'productDisplayName' => 'Bettwäsche und Kissen mit dem Gesicht von Mertens',
-            'productDisplayPrice' => rand(0,9).rand(0,9).','.rand(0,9).rand(0,9),
-            'productImagePath' => 'resources/images/mockup_product_4.png',
-        ],
-        [
-            'productHandle' => 'mockup_product_5',
-            'productDisplayName' => 'X-Streme Mertens Energy Drink',
-            'productDisplayPrice' => rand(0,9).rand(0,9).','.rand(0,9).rand(0,9),
-            'productImagePath' => 'resources/images/mockup_product_5.png',
-        ]
-    ];
-    return view('welcome', ['products' => $products]);
-});
+Route::get('/', [ProductListController::class, "show"]);
+
+Route::get('/products', [ProductListController::class, "show"]);
 
 Route::get('/products/{productHandle}', function ($productHandle) {
 

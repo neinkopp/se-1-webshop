@@ -37,11 +37,11 @@
 
                 {{-- Product Card --}}
                 @foreach ($products as $product)
-                    <x-product-card
-                        :productHandle="$product['productHandle']"
-                        :productDisplayName="$product['productDisplayName']"
-                        :productImagePath="$product['productImagePath']"
-                        :productDisplayPrice="$product['productDisplayPrice']"
+                    <x-product-card 
+                    :productHandle="$product->handle"
+                    :productDisplayName="$product->name"
+                    :productDisplayPrice="$product->price"
+                    :productImagePath="$product->default_pictures[0]['picture_storage_key']"
                     />
                 @endforeach
             </div>

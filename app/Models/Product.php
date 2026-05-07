@@ -9,28 +9,14 @@ use Illuminate\Support\Str;
 
 class Product extends Model
 {
-    public function getProductCards(?int $category_id = null, array ...$filteredAttributes): array
-    {
-        return [];
-    }
+    protected $table = 'product';
+    public $timestamps = false;
+    protected $casts = [
+        'attributes' => 'array',
+    ];
 
-    public function getFeaturedProductCards(): array
+    protected function getDefaultPicturesAttribute(): array
     {
-        return [];
-    }
-
-    private function deserializeAttributes(array $product): array
-    {
-        return [];
-    }
-
-    public function getProductByHandle(string $handle): array
-    {
-        return [];
-    }
-
-    public function getProductById(string $uuid): array
-    {
-        return [];
+        return $this->getAttribute("attributes")["default_pictures"] ?? [];
     }
 }

@@ -1,5 +1,5 @@
 <a class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition" href="\products\{{ $productHandle }}">
-    <img src="{{ Vite::asset($productImagePath) }}"
+    <img src="{{ Vite::asset("resources/images/{$productImagePath}") }}"
             alt="Produkt"
             class="w-full">
 
