@@ -1,5 +1,5 @@
 # BHH Webshop ITECH 
-
+This is a test
 ## Demo .env config
 ```
 APP_NAME="BHH Webshop"
