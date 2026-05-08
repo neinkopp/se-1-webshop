@@ -1,5 +1,5 @@
 # BHH Webshop ITECH 
-This is a test
+Der offizielle AStA-Webshop der Beruflichen Hochschule Hamburg.
 ## Demo .env config
 ```
 APP_NAME="BHH Webshop"
