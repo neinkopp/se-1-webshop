@@ -22,7 +22,7 @@ DB_PASSWORD=password
 - Run "php artisan serve" in another console
 - Run "docker compose up -d" in a third console
 
-Or the easy way:
+🍋 Or the easy way:
 
 - Run composer run dev
 ```
