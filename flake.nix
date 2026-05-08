@@ -6,15 +6,23 @@
     utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, utils }:
-    utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      utils,
+    }:
+    utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs { inherit system; };
-        
+
         # Erstellt eine PHP-Instanz mit allen notwendigen Treibern.
         # Nix kümmert sich hierbei selbst um das Laden der .so Dateien.
-        php = pkgs.php83.withExtensions ({ enabled, all }: 
-          enabled ++ [
+        php = pkgs.php85.withExtensions (
+          { enabled, all }:
+          enabled
+          ++ [
             all.pdo_pgsql
             all.pgsql
             all.bcmath
@@ -24,6 +32,7 @@
             all.tokenizer
             all.dom
             all.xml
+            all.pcov
           ]
         );
       in
@@ -31,7 +40,8 @@
         devShells.default = pkgs.mkShell {
           buildInputs = [
             php
-            pkgs.php83Packages.composer
+            pkgs.php85Packages.composer
+            pkgs.php85Extensions.pcov
             pkgs.nodejs_20
             pkgs.postgresql
             pkgs.docker-compose
@@ -43,5 +53,6 @@
             php -m | grep -E "dom|tokenizer|pdo_pgsql"
           '';
         };
-      });
+      }
+    );
 }
