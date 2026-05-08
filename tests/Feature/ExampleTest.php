@@ -13,8 +13,8 @@ class ExampleTest extends TestCase
      */
     public function test_the_application_returns_a_successful_response(): void
     {
-        $response = $this->get('/');
+        $response = $this->get('/abc');
 
-        $response->assertStatus(500);
+        $response->assertStatus(404);
     }
 }
