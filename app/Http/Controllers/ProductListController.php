@@ -68,6 +68,10 @@ class ProductListController extends Controller {
         if ($priceRange["max"] !== null) {
             $productQuery->where("price", "<=", $priceRange["max"]);
         }
+
+        if($request->filled("productName")) {
+            $productQuery->whereLike("name", "%".$request->query("productName")."%", false, false, false);
+        }
         
         try {
             $products = $productQuery->get();

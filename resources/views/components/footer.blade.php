@@ -1,4 +1,4 @@
-<footer class="bg-gradient-to-r from-blue-900 to-blue-700 text-white">
+<footer class="bg-gradient-to-r from-blue-900 to-blue-700 text-white mt-auto">
 
     <div class="max-w-7xl mx-auto px-6 py-12">
 

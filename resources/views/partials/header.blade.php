@@ -22,32 +22,34 @@
 
             <div class="relative">
 
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    class="w-full py-2 lg:py-3 pl-5 pr-14 rounded-md
-                           border border-gray-300 shadow-sm
-                           focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-
-                <div class="absolute right-4 top-1/2 -translate-y-1/2">
-
-                    <svg
-                        class="w-5 h-5 text-gray-500"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
+                <form action="/products">
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        name="productName"
+                        class="w-full py-2 lg:py-3 pl-5 pr-14 rounded-md
+                            border border-gray-300 shadow-sm
+                            focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
-                        />
-                    </svg>
 
-                </div>
-
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2">
+                        <button type="submit">
+                            <svg
+                                class="w-5 h-5 text-gray-500"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
             </div>
 
         </div>

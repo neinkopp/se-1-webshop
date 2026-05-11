@@ -1,4 +1,5 @@
 {{-- CATEGORY HEADER --}}
+@props(['categories', 'sidePanelTitle'])
 <div class="sticky top-24 z-30 bg-white border-b border-gray-300 shadow-sm">
 
     <div class="flex items-center overflow-x-auto">

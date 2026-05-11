@@ -17,7 +17,7 @@
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
 
 <div
     x-data="{
@@ -47,18 +47,7 @@
             />
 
             {{-- HERO --}}
-            <section class="relative">
-
-                <img
-                    src="{{ Vite::asset('resources/images/banner.webp') }}"
-                    alt="Banner"
-                    class="w-full h-[220px] sm:h-[320px] lg:h-[420px] object-scale"
-                >
-
-                <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-blue-900 to-transparent">
-                </div>
-
-            </section>
+            <x-banner-carousel />
 
             {{-- TITLE --}}
             <section class="bg-gradient-to-b from-blue-800 to-blue-500 text-white py-10">
@@ -96,10 +85,10 @@
                 </div>
 
             </section>
-            <x-footer />
         </main>
 
     </div>
+    <x-footer />
 
 </div>
 

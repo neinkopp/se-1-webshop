@@ -1,3 +1,4 @@
+@props(['title'])
 <div x-data="{ open: true }" class="mb-5 border-b pb-4">
 
     <button
