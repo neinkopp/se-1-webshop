@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class filter-select extends Component
+class filterSection extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class filter-select extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.filter-select');
+        return view('components.filter-section');
     }
 }

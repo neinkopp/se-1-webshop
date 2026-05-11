@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class filter-range extends Component
+class filterContainer extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class filter-range extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.filter-range');
+        return view('components.filter-container');
     }
 }

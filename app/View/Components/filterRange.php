@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class filter-color-select extends Component
+class filterRange extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class filter-color-select extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.filter-color-select');
+        return view('components.filter-range');
     }
 }

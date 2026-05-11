@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class content-header extends Component
+class filterColorSelect extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class content-header extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.content-header');
+        return view('components.filter-color-select');
     }
 }
