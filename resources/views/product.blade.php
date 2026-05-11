@@ -7,6 +7,8 @@
 
     {{-- TailwindCSS CDN for quick styling --}}
     <script src="https://cdn.tailwindcss.com"></script>
+    {{-- AlpineJS --}}
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
         body {
@@ -16,9 +18,16 @@
 </head>
 
 <body class="bg-gray-50 text-gray-800 pt-24 min-h-screen flex flex-col">
-
+<div x-data="{mobileMenuOpen: false}">
     {{-- Header --}}
-    @include('partials.header')
+    <x-header>
+        <x-slot:actionsSlot>
+            <x-header-actions />
+        </x-slot:actionsSlot>
+        <x-slot:behaviorSlot>
+            <x-header-actions-mobile />
+        </x-slot:behaviorSlot>
+    </x-header>
     
     <div class="container mx-auto px-6 py-12">
         <x-product-detail  :product="$product"/>
@@ -26,20 +35,7 @@
     </div>
 
     <x-footer />
-
-    {{-- JS: total price calculation --}}
-    <script>
-        const quantityInput = document.getElementById('quantity');
-        const unitPrice = parseFloat(document.getElementById('unitPrice').innerText);
-        const totalPrice = document.getElementById('totalPrice');
-
-        function updateTotal() {
-            const quantity = parseInt(quantityInput.value) || 1;
-            totalPrice.innerText = (unitPrice * quantity).toFixed(2);
-        }
-
-        quantityInput.addEventListener('input', updateTotal);
-    </script>
+</div>
 
 </body>
 </html>

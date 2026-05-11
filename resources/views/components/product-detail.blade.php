@@ -4,7 +4,7 @@
 
     {{-- BACK LINK --}}
     <a
-        href="/"
+        href="products"
         class="inline-flex items-center gap-3 text-blue-900 font-semibold mb-8 hover:underline"
     >
         <svg
@@ -37,7 +37,7 @@
                 <div class="flex-1 border rounded-xl overflow-hidden bg-white">
 
                     <img
-                        src="{{ Vite::asset('resources/images/mockup_product_1.png') }}"
+                        src="{{ Vite::asset('resources/images/'.$product->default_pictures[0]['picture_storage_key']) }}"
                         alt="Produkt"
                         class="w-full aspect-square object-contain p-6"
                     >
@@ -47,21 +47,14 @@
                 {{-- THUMBNAILS --}}
                 <div class="flex flex-col gap-4">
 
-                    @for ($i = 0; $i < 3; $i++)
+                    @foreach($product->default_pictures as $defaultPicture)
 
-                        <button
-                            class="w-24 h-24 border-2 border-blue-900 rounded-xl overflow-hidden bg-white hover:border-blue-600 transition"
-                        >
-
-                            <img
-                                src="{{ Vite::asset('resources/images/mockup_product_1.png') }}"
-                                alt="Thumbnail"
-                                class="w-full h-full object-contain p-2"
-                            >
+                        <button class="w-24 h-24 border-2 border-blue-900 rounded-xl overflow-hidden bg-white hover:border-blue-600 transition">
+                            <img src="{{ Vite::asset('resources/images/'.$defaultPicture['picture_storage_key']) }}" alt="Thumbnail" class="w-full h-full object-contain p-2">
 
                         </button>
 
-                    @endfor
+                    @endforeach
 
                 </div>
 
@@ -77,27 +70,15 @@
                 <div class="flex flex-wrap gap-6">
 
                     {{-- COLOR OPTION --}}
-                    @php
-                        $colors = [
-                            ['name' => 'Blau', 'value' => '#005EA8'],
-                            ['name' => 'Weiß', 'value' => '#FFFFFF'],
-                            ['name' => 'Gelb', 'value' => '#F4E600'],
-                            ['name' => 'Schwarz', 'value' => '#000000'],
-                            ['name' => 'Rot', 'value' => '#FF0000'],
-                        ];
-                    @endphp
 
-                    @foreach ($colors as $color)
+                    @foreach ($product->attributes["properties"]["color"] as $color)
 
                         <button class="flex flex-col items-center gap-2 group">
 
-                            <div
-                                class="w-10 h-10 rounded-full border-2 border-gray-300 group-hover:scale-110 transition"
-                                style="background-color: {{ $color['value'] }}"
-                            ></div>
+                            <div class="w-10 h-10 rounded-full border-2 border-gray-300 group-hover:scale-110 transition" style="background-color: {{ $color['value'] }}"></div>
 
                             <span class="text-sm text-gray-700">
-                                {{ $color['name'] }}
+                                {{ $color['displayName'] }}
                             </span>
 
                         </button>
@@ -115,12 +96,12 @@
 
             {{-- PRODUCT TITLE --}}
             <h1 class="text-4xl font-bold text-blue-950 mb-4">
-                Mertens Beutel
+                {{ $product->name }}
             </h1>
 
             {{-- PRICE --}}
             <div class="text-5xl font-bold text-blue-900 mb-6">
-                10 €
+                {{ $product->price }}€
             </div>
 
             <div class="border-b mb-8"></div>
@@ -203,16 +184,14 @@
                 </h2>
 
                 <p class="text-gray-700 leading-relaxed">
-                    Robuster Baumwollbeutel mit Kordelzug.
-                    Ideal für den täglichen Gebrauch,
-                    umweltfreundlich und wiederverwendbar.
+                    {{ $product->description }}
                 </p>
 
             </div>
 
             {{-- PRODUCER --}}
             <div class="mt-6 text-xl font-semibold">
-                Produzent: A
+                Produzent: {{ $product->supplier_name }}
             </div>
 
         </div>

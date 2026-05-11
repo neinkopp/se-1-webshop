@@ -27,8 +27,14 @@
     class="flex flex-col flex-1"
 >
 
-    {{-- HEADER --}}
-    @include('partials.header')
+    <x-header>
+        <x-slot:actionsSlot>
+            <x-header-actions />
+        </x-slot:actionsSlot>
+        <x-slot:behaviorSlot>
+            <x-header-actions-mobile />
+        </x-slot:behaviorSlot>
+    </x-header>
 
     <div class="flex pt-24">
 

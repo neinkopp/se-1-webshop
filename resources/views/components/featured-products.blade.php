@@ -1,50 +1,75 @@
 @props(['featuredProducts'])
-<section class="mt-20">
+<div
+    x-data="{
+        current: 0,
+        cardWidth: 320,
 
-    <div class="flex items-center justify-between mb-8">
+        next(max) {
+            if (this.current < max) {
+                this.current++
+            }
+        },
 
-        <h2 class="text-3xl font-bold text-blue-950">
-            Unsere Empfehlung
-        </h2>
+        previous() {
+            if (this.current > 0) {
+                this.current--
+            }
+        }
+    }"
+    class="relative"
+>
 
-    </div>
+    {{-- LEFT BUTTON --}}
+    <button
+        @click="previous()"
+        class="absolute -left-6 top-1/2 -translate-y-1/2
+               w-14 h-14 rounded-full border-2 border-blue-800
+               text-blue-800 hover:bg-blue-50 transition
+               hidden lg:flex items-center justify-center z-10"
+    >
+        ←
+    </button>
 
-    <div class="relative">
+    {{-- SLIDER CONTAINER --}}
+    <div class="overflow-hidden">
 
-        {{-- LEFT ARROW --}}
-        <button
-            class="absolute -left-6 top-1/2 -translate-y-1/2
-                    w-14 h-14 rounded-full border-2 border-blue-800
-                    text-blue-800 hover:bg-blue-50 transition
-                    hidden lg:flex items-center justify-center z-10"
+        {{-- SLIDER --}}
+        <div
+            class="flex gap-6 transition-transform duration-500"
+            :style="`
+                transform:
+                translateX(-${current * cardWidth}px)
+            `"
         >
-            ←
-        </button>
 
-        {{-- PRODUCTS --}}
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            @foreach ($featuredProducts as $product)
 
-            @foreach($featuredProducts as $product)
-                <x-featured-product-card 
-                    :productHandle="$product['handle']"
-                    :productDisplayName="$product['name']"
-                    :productDisplayPrice="$product['price']"
-                    :productImagePath="$product['default_pictures'][0]['picture_storage_key']"
-                />
+                <div class="min-w-[296px] max-w-[296px]">
+
+                    <x-featured-product-card
+                        :productHandle="$product->handle"
+                        :productDisplayName="$product->name"
+                        :productDisplayPrice="$product->price"
+                        :productImagePath="$product->default_pictures[0]['picture_storage_key']"
+                    />
+
+                </div>
+
             @endforeach
 
         </div>
 
-        {{-- RIGHT ARROW --}}
-        <button
-            class="absolute -right-6 top-1/2 -translate-y-1/2
-                    w-14 h-14 rounded-full border-2 border-blue-800
-                    text-blue-800 hover:bg-blue-50 transition
-                    hidden lg:flex items-center justify-center z-10"
-        >
-            →
-        </button>
-
     </div>
 
-</section>
+    {{-- RIGHT BUTTON --}}
+    <button
+        @click="next({{ max(count($featuredProducts) - 4, 0) }})"
+        class="absolute -right-6 top-1/2 -translate-y-1/2
+               w-14 h-14 rounded-full border-2 border-blue-800
+               text-blue-800 hover:bg-blue-50 transition
+               hidden lg:flex items-center justify-center z-10"
+    >
+        →
+    </button>
+
+</div>
