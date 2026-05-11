@@ -7,16 +7,10 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function getAllProducts(): array
-    {
-        $products = Product::all();
 
-        return compact('products');
-    }
-
-    public function show(string $handle)
+    public function show(string $productHandle)
     {
-        $product = Product::where('handle', '=', $handle, true)->firstOrFail();
+        $product = Product::where('handle', '=', $productHandle, false)->firstOrFail();
 
         return view('product', compact('product'));
     }

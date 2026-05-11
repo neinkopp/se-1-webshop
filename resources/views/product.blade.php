@@ -27,7 +27,7 @@
             {{-- Product Image --}}
             <div class="flex justify-center">
                 <img 
-                    src="{{ Vite::asset($product['productImagePath']) }}"
+                    src="{{ Vite::asset('resources/images/'.$product->default_pictures[0]['picture_storage_key']) }}"
                     class="w-96 rounded-xl shadow-md"
                     alt="Product Image"
                 >
@@ -38,19 +38,19 @@
 
                 {{-- Name --}}
                 <h1 class="text-4xl font-bold">
-                    {{ $product['productDisplayName'] }}
+                    {{ $product->name }}
                 </h1>
 
                 {{-- Price --}}
                 <p class="text-2xl text-indigo-600 font-semibold">
                     <span id="unitPrice">
-                        {{ $product['productDisplayPrice'] }}€
+                        {{ $product->price }}€
                     </span>
                 </p>
 
                 {{-- Description --}}
                 <p class="text-gray-600">
-                    {{ $product['productDescription'] }}
+                    {{ $product->description }}
                 </p>
 
                 {{-- Color Selection --}}
@@ -100,7 +100,7 @@
                 {{-- Total Price --}}
                 <div class="text-xl font-bold">
                     Total: <span id="totalPrice">
-                        {{ $product['productDisplayPrice'] }}€
+                        {{ $product->price }}€
                     </span>
                 </div>
 

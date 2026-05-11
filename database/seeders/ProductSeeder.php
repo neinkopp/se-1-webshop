@@ -31,8 +31,8 @@ class ProductSeeder extends Seeder
                     'properties' => [
                         'color' => [
                             [
-                                'displayName' => 'Olivgrün',
-                                'value' => '#123456',
+                                'displayName' => 'Grün',
+                                'value' => '#00ff00',
                                 'pictures' => [
                                     [
                                         'picture_storage_key' => "mockup_product_".fake()->numberBetween(1,5).".png"
@@ -52,9 +52,51 @@ class ProductSeeder extends Seeder
                             ]
                         ],
                         'size' => ['XS', 'XL', 'XXL'],
-                        'shape' => [
-                            ['displayName' => 'Dreieckig']
+                        'material' => ['Baumwolle', 'Polyester']
+                    ]
+                ]
+            ]);
+        }
+        for($i = 10; $i < 15; $i++) {
+            Product::create([
+                'id' => fake()->uuid(),
+                'category_id' => '1',
+                'supplier_name' => "mock_supplier_1",
+                'name' => fake()->name(),
+                'handle' => "mock_product_{$i}",
+                'description' => fake()->text(),
+                'price' => fake()->numberBetween(1,23),
+                'attributes' => [
+                    'default_pictures' => [
+                        [
+                            'picture_storage_key' => "mockup_product_".fake()->numberBetween(1,5).".png"
                         ]
+                    ],
+                    'properties' => [
+                        'color' => [
+                            [
+                                'displayName' => 'Rot',
+                                'value' => '#ff0000',
+                                'pictures' => [
+                                    [
+                                        'picture_storage_key' => "mockup_product_".fake()->numberBetween(1,5).".png"
+                                    ]
+                                ],
+                                'externalId' => 'asduashkd'
+                            ],
+                            [
+                                'displayName' => 'Weiß',
+                                'value' => '#ffffff',
+                                'pictures' => [
+                                    [
+                                        'picture_storage_key' => "mockup_product_".fake()->numberBetween(1,5).".png"
+                                    ]
+                                ],
+                                'externalId' => 'asduashkd'
+                            ]
+                        ],
+                        'size' => ['XL', 'L', 'M'],
+                        'material' => ['Leinen', 'Viskose']
                     ]
                 ]
             ]);

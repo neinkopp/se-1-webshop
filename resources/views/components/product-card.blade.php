@@ -8,10 +8,6 @@
 
         <div class="flex justify-between items-center">
             <span class="text-indigo-600 font-bold text-lg">{{ $productDisplayPrice }}€</span>
-
-            <x-button>
-                Details
-            </x-button>
         </div>
     </div>
 </a>
