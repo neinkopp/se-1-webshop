@@ -25,7 +25,7 @@
         class="absolute -left-6 top-1/2 -translate-y-1/2
                w-14 h-14 rounded-full border-2 border-blue-800
                text-blue-800 hover:bg-blue-50 transition
-               hidden lg:flex items-center justify-center z-10"
+               hidden lg:flex items-center justify-center z-10 bg-white"
     >
         ←
     </button>
@@ -67,7 +67,7 @@
         class="absolute -right-6 top-1/2 -translate-y-1/2
                w-14 h-14 rounded-full border-2 border-blue-800
                text-blue-800 hover:bg-blue-50 transition
-               hidden lg:flex items-center justify-center z-10"
+               hidden lg:flex items-center justify-center z-10 bg-white"
     >
         →
     </button>
