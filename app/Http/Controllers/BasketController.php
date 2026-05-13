@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Supplier;
-use App\Models\ShoppingBasketPosition;
+use App\Models\ShoppingCartPosition;
 
 class BasketController extends Controller
 {
@@ -19,22 +19,21 @@ class BasketController extends Controller
 
     public function put(Request $request) {
         if ($request->filled('productHandle')) {
-            $product = Product::where('handle', '=', $request->query('productHandle'), false)->firstOrFail();
+            $product = Product::where('handle', '=', $request->input('productHandle'), false)->firstOrFail();
             $productAttributes = $product->attributes["properties"];
             $productAttributeNames = array_keys($productAttributes);
             $productAttributeCount = count($productAttributes);
             $selectedOptions["properties"] = [];
             for($i = 0; $i < $productAttributeCount; $i++) {
                 $currentAttributeName = $productAttributeNames[$i];
-                $currentAttribute = $productAttributes[$currentAttributeName];
                 if($request->filled($currentAttributeName)) {
-                    $selectedOptions["properties"][$currentAttributeName] = $currentAttribute;
+                    $selectedOptions["properties"][$currentAttributeName] = $request->input($currentAttributeName);
                 }
             }
-            $amount = $request->filled('amount') ? $request->query('amount'):'1';
+            $amount = $request->filled('amount') ? $request->input('amount'):'1';
 
             try {
-                $basketQuery = ShoppingBasketPosition::create(['1',session()->getId(), $product->id(), $amount, $selectedOptions]);
+                $basketQuery = ShoppingCartPosition::create(['session_id' => session()->getId(), 'product_id' => $product->id, 'amount' => $amount, 'selected_options' => $selectedOptions]);
 
                 return response()->json([
                     'status' => 'success',
@@ -49,7 +48,7 @@ class BasketController extends Controller
         }
         return response()->json([
             'status' => 'failure',
-            'message' => 'Product missing'
+            'message' => 'Product missing!'
         ], 500);
     }
 
