@@ -11,6 +11,10 @@
     "shape": {
       "displayName": "Form",
       "type": "select"
+    },
+    "print": {
+      "displayName": "Aufdruck",
+      "type": "single"
     }
   }
 }

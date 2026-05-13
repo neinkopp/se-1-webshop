@@ -4,6 +4,16 @@
       "picture_storage_key": "a3f86374a6463"
     }
   ],
+  "assets": [
+    {
+      "asset_storage_key": "a3f86374a6463",
+      "position": "back"
+    },
+    {
+      "asset_storage_key": "a3f86374a6463",
+      "position": "front"
+    }
+  ],
   "properties": {
     "color": [
       {
@@ -31,6 +41,14 @@
     "shape": [
       {
         "displayName": "Dreieckig"
+      }
+    ],
+    "print": [
+      {
+        "displayName": "Prof. Klaffke"
+      },
+      {
+        "displayName": "Prof. Klaffke"
       }
     ]
   }
