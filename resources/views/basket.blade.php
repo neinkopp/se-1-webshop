@@ -63,107 +63,57 @@
                             <p class="text-blue-900 text-sm font-medium">Ihre Artikel werden im Warenkorb gespeichert.</p>
                         </div>
 
-                        {{-- MANUFACTURER GROUP 1 --}}
+                        @forelse ($cartItemsBySupplier as $supplierName => $items)
                         <div class="bg-white border border-gray-200 rounded-md shadow-sm">
                             <div class="bg-gray-50 border-b border-gray-200 px-5 py-3 flex justify-between items-center rounded-t-md">
-                                <h3 class="font-bold text-blue-900">Hersteller: Textilwerk Hamburg</h3>
-                                <span class="bg-[#e6eff8] text-blue-900 text-xs font-semibold px-2.5 py-1 rounded">2 Artikel</span>
+                                <h3 class="font-bold text-blue-900">Hersteller: {{ $supplierName }}</h3>
+                                <span class="bg-[#e6eff8] text-blue-900 text-xs font-semibold px-2.5 py-1 rounded">{{ $items->count() }} Artikel</span>
                             </div>
 
                             <div class="divide-y divide-gray-100">
-                                {{-- Item 1 --}}
+                                @foreach ($items as $item)
                                 <div class="p-5 flex flex-col sm:flex-row gap-5">
                                     <div class="w-24 h-24 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center overflow-hidden">
-                                        {{-- Dummy Image Placeholder for the bag --}}
-                                        <img src="https://placehold.co/150x150/e2e8f0/475569?text=Tasche" alt="Mertens Tasche" class="w-full h-full object-cover">
+                                        <img src="{{ $item->product->image ?? 'https://placehold.co/150x150/e2e8f0/475569?text=Bild' }}" alt="{{ $item->product->name }}" class="w-full h-full object-cover">
                                     </div>
                                     <div class="flex-1 flex flex-col justify-between">
                                         <div>
-                                            <a href="#" class="text-lg font-bold text-blue-900 hover:underline">Mertens Tasche</a>
+                                            <a href="#" class="text-lg font-bold text-blue-900 hover:underline">{{ $item->product->name }}</a>
+                                            @if ($item->selected_options && isset($item->selected_options['properties']))
+                                            @foreach ($item->selected_options['properties'] as $key => $value)
                                             <div class="mt-2 text-sm text-gray-700 flex items-center gap-2">
-                                                <span>Farbe:</span>
-                                                <span class="w-4 h-4 rounded-full bg-[#cc2222] shadow-inner block"></span>
-                                                <span>Rot</span>
+                                                <span>{{ ucfirst($key) }}:</span>
+                                                @if ($key == 'color' || $key == 'Farbe')
+                                                <span class="w-4 h-4 rounded-full shadow-inner block" style="background-color: {{ $value }}"></span>
+                                                @endif
+                                                <span>{{ $value }}</span>
                                             </div>
+                                            @endforeach
+                                            @endif
                                             <div class="mt-1 text-sm text-gray-700">
-                                                <span>Menge: 1</span>
+                                                <span>Menge: {{ $item->amount }}</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="flex flex-col items-end justify-between sm:w-24 mt-4 sm:mt-0">
-                                        <span class="text-xl font-bold text-blue-900">10 $</span>
-                                        <button class="text-blue-900 hover:text-red-600 transition" aria-label="Artikel entfernen">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-                                            </svg>
-                                        </button>
+                                        <span class="text-xl font-bold text-blue-900">{{ number_format($item->product->price * $item->amount, 2) }} $</span>
+                                        <form action="{{ route('basket.remove') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="position_id" value="{{ $item->id }}">
+                                            <button type="submit" class="text-blue-900 hover:text-red-600 transition" aria-label="Artikel entfernen">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                                                </svg>
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
-
-                                {{-- Item 2 --}}
-                                <div class="p-5 flex flex-col sm:flex-row gap-5">
-                                    <div class="w-24 h-24 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center overflow-hidden">
-                                        <img src="https://placehold.co/150x150/e2e8f0/475569?text=Tasche" alt="Mertens Tasche" class="w-full h-full object-cover">
-                                    </div>
-                                    <div class="flex-1 flex flex-col justify-between">
-                                        <div>
-                                            <a href="#" class="text-lg font-bold text-blue-900 hover:underline">Mertens Tasche</a>
-                                            <div class="mt-2 text-sm text-gray-700 flex items-center gap-2">
-                                                <span>Farbe:</span>
-                                                <span class="w-4 h-4 rounded-full bg-black shadow-inner block"></span>
-                                                <span>Schwarz</span>
-                                            </div>
-                                            <div class="mt-1 text-sm text-gray-700">
-                                                <span>Menge: 1</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col items-end justify-between sm:w-24 mt-4 sm:mt-0">
-                                        <span class="text-xl font-bold text-blue-900">10 $</span>
-                                        <button class="text-blue-900 hover:text-red-600 transition" aria-label="Artikel entfernen">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
-
-                        {{-- MANUFACTURER GROUP 2 --}}
-                        <div class="bg-white border border-gray-200 rounded-md shadow-sm">
-                            <div class="bg-gray-50 border-b border-gray-200 px-5 py-3 flex justify-between items-center rounded-t-md">
-                                <h3 class="font-bold text-blue-900">Hersteller: Norddeutsche Baumwollmanufaktur</h3>
-                                <span class="bg-[#e6eff8] text-blue-900 text-xs font-semibold px-2.5 py-1 rounded">1 Artikel</span>
-                            </div>
-
-                            <div class="p-5 flex flex-col sm:flex-row gap-5">
-                                <div class="w-24 h-24 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center overflow-hidden">
-                                    <img src="https://placehold.co/150x150/e2e8f0/475569?text=Tasche" alt="Mertens Tasche" class="w-full h-full object-cover">
-                                </div>
-                                <div class="flex-1 flex flex-col justify-between">
-                                    <div>
-                                        <a href="#" class="text-lg font-bold text-blue-900 hover:underline">Mertens Tasche</a>
-                                        <div class="mt-2 text-sm text-gray-700 flex items-center gap-2">
-                                            <span>Farbe:</span>
-                                            <span class="w-4 h-4 rounded-full bg-white border border-gray-300 block"></span>
-                                            <span>Weiß</span>
-                                        </div>
-                                        <div class="mt-1 text-sm text-gray-700">
-                                            <span>Menge: 1</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col items-end justify-between sm:w-24 mt-4 sm:mt-0">
-                                    <span class="text-xl font-bold text-blue-900">10 $</span>
-                                    <button class="text-blue-900 hover:text-red-600 transition" aria-label="Artikel entfernen">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        @empty
+                        <p>Ihr Warenkorb ist leer.</p>
+                        @endforelse
 
                         {{-- BACK BUTTON --}}
                         <div class="pt-2">
@@ -177,6 +127,7 @@
                     </div>
 
                     {{-- RIGHT COLUMN: ORDER SUMMARY --}}
+                    @if($cartItemsBySupplier->count() > 0)
                     <div class="w-full lg:w-[360px] shrink-0">
                         <div class="bg-white border border-gray-200 rounded-md shadow-sm p-6 sticky top-28">
                             <h2 class="text-xl font-bold text-blue-900 mb-6">Bestellübersicht</h2>
@@ -185,16 +136,16 @@
                                 <div class="flex justify-between items-start">
                                     <div>
                                         <p class="font-medium text-blue-900">Zwischensumme:</p>
-                                        <p class="text-sm text-gray-500">(3 Artikel)</p>
+                                        <p class="text-sm text-gray-500">({{ $totalItems }} Artikel)</p>
                                     </div>
-                                    <span class="font-bold text-lg text-blue-900">30 $</span>
+                                    <span class="font-bold text-lg text-blue-900">{{ number_format($totalPrice, 2) }} $</span>
                                 </div>
 
                                 <hr class="border-gray-200 py-1">
 
                                 <div class="flex justify-between items-center">
                                     <span class="font-bold text-lg text-blue-900">Gesamtsumme</span>
-                                    <span class="font-bold text-xl text-blue-900">30 $</span>
+                                    <span class="font-bold text-xl text-blue-900">{{ number_format($totalPrice, 2) }} $</span>
                                 </div>
 
                                 <div class="pt-4">
@@ -206,7 +157,7 @@
                             </div>
                         </div>
                     </div>
-
+                    @endif
                 </section>
             </main>
 

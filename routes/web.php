@@ -13,6 +13,7 @@ Route::get('/products', [ProductListController::class, "show"]);
 
 Route::get('/products/{productHandle}', [ProductController::class, "show"]);
 
-Route::get('/basket', [BasketController::class, "show"]);
+Route::get('/basket', [BasketController::class, "show"])->name('basket.show');
 Route::post('/putInBasket', [BasketController::class, "put"]);
 Route::post('/changeBasketItem', [BasketController::class, "change"]);
+Route::post('/basket/remove', [BasketController::class, 'remove'])->name('basket.remove');
