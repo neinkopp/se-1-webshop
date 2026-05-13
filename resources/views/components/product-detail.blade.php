@@ -135,7 +135,7 @@ async function validateForm(event) {
                 {{ $product->name }}
             </h1>
 
-            <input name="productId" value="{{ $product->handle }}" hidden>
+            <input name="productHandle" value="{{ $product->handle }}" hidden>
 
             {{-- PRICE --}}
             <div class="text-5xl font-bold text-blue-900 mb-6">

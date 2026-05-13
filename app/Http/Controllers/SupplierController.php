@@ -10,7 +10,7 @@ class SupplierController extends Controller
     public function getAllSuppliers(): array
     {
         $suppliers = Supplier::all();
-
+        
         return compact('suppliers');
     }
 
