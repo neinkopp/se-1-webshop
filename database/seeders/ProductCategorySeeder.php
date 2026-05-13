@@ -16,39 +16,19 @@ class ProductCategorySeeder extends Seeder
             'filters' => [
                 'color' => [
                     'displayName' => 'Farbe',
-                    'type' => 'color',
-                    'options' => [
-                        0 => [
-                            'name' => 'Rot',
-                            'value' => 'ff0000',
-                        ],
-                        1 => [
-                            'name' => 'Blau',
-                            'value' => '0000ff',
-                        ],
-                        2 => [
-                            'name' => 'Grün',
-                            'value' => '00ff00',
-                        ],
-                        3 => [
-                            'name' => 'Weiß',
-                            'value' => 'ffffff',
-                        ],
-                        4 => [
-                            'name' => 'Schwarz',
-                            'value' => '000000',
-                        ]
-                    ]
+                    'type' => 'color'
                 ],
                 'size' => [
                     'displayName' => 'Größe',
-                    'type' => 'select',
-                    'options' => ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+                    'type' => 'select'
                 ],
                 'material' => [
                     'displayName' => 'Material',
-                    'type' => 'select',
-                    'options' => ['Baumwolle', 'Polyester', 'Viskose', 'Leinen']
+                    'type' => 'select'
+                ],
+                'print' => [
+                    'displayName' => 'Aufdruck',
+                    'type' => 'select'
                 ]
             ]
         ]);
@@ -60,44 +40,23 @@ class ProductCategorySeeder extends Seeder
             'filters' => [
                 'color' => [
                     'displayName' => 'Farbe',
-                    'type' => 'color',
-                    'options' => [
-                        0 => [
-                            'name' => 'Schwarz',
-                            'value' => '000000',
-                        ],
-                        1 => [
-                            'name' => 'Blau',
-                            'value' => '0000ff',
-                        ],
-                        2 => [
-                            'name' => 'Gelb',
-                            'value' => 'ffff00',
-                        ],
-                        3 => [
-                            'name' => 'Weiß',
-                            'value' => 'ffffff',
-                        ],
-                        4 => [
-                            'name' => 'Pink',
-                            'value' => 'ff00ff',
-                        ]
-                    ]
+                    'type' => 'color'
                 ],
                 'waist_size' => [
                     'displayName' => 'Bundweite',
-                    'type' => 'range',
-                    'options' => ['28', '29', '30', '31', '32', '33', '34', '36', '38', '40']
+                    'type' => 'select'
                 ],
                 'length' => [
                     'displayName' => 'Länge',
-                    'type' => 'select',
-                    'options' => ['Kurz', 'Normal', 'Lang', '30', '32', '34', '36']
+                    'type' => 'select'
                 ],
                 'fit' => [
                     'displayName' => 'Passform',
-                    'type' => 'select',
-                    'options' => ['Slim Fit', 'Regular Fit', 'Comfort Fit', 'Skinny', 'Straight']
+                    'type' => 'select'
+                ],
+                'print' => [
+                    'displayName' => 'Aufdruck',
+                    'type' => 'select'
                 ]
             ]
         ]);
@@ -110,38 +69,18 @@ class ProductCategorySeeder extends Seeder
                 'color' => [
                     'displayName' => 'Farbe',
                     'type' => 'color',
-                    'options' => [
-                        0 => [
-                            'name' => 'Dunkelrot',
-                            'value' => '990000',
-                        ],
-                        1 => [
-                            'name' => 'Christian-Louboutin-Rot',
-                            'value' => 'ee1f25',
-                        ],
-                        2 => [
-                            'name' => 'Rot',
-                            'value' => 'aa0000',
-                        ],
-                        3 => [
-                            'name' => 'Absolutes Rot',
-                            'value' => 'ff0000',
-                        ],
-                        4 => [
-                            'name' => 'Karminrot',
-                            'value' => 'a13c3c',
-                        ]
-                    ]
                 ],
                 'shoe_size' => [
                     'displayName' => 'Schuhgröße',
-                    'type' => 'range',
-                    'options' => ['36', '46']
+                    'type' => 'select'
                 ],
                 'material' => [
                     'displayName' => 'Material',
-                    'type' => 'select',
-                    'options' => ['Leder', 'Textil', 'Synthetik', 'Wildleder']
+                    'type' => 'select'
+                ],
+                'print' => [
+                    'displayName' => 'Aufdruck',
+                    'type' => 'select'
                 ]
             ]
         ]);
@@ -153,23 +92,23 @@ class ProductCategorySeeder extends Seeder
             'filters' => [
                 'color' => [
                     'displayName' => 'Farbe',
-                    'type' => 'color',
-                    'options' => ['Schwarz', 'Navy', 'Grau', 'Grün', 'Beige', 'Braun']
+                    'type' => 'color'
                 ],
                 'size' => [
                     'displayName' => 'Größe',
-                    'type' => 'select',
-                    'options' => ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL']
+                    'type' => 'select'
                 ],
                 'warmth_level' => [
                     'displayName' => 'Wärmegrad',
-                    'type' => 'select',
-                    'options' => ['Leicht', 'Mittel', 'Warm', 'Sehr warm']
+                    'type' => 'select'
                 ],
                 'waterproof' => [
                     'displayName' => 'Wasserdicht',
-                    'type' => 'boolean',
-                    'options' => ['Ja', 'Nein']
+                    'type' => 'select'
+                ],
+                'print' => [
+                    'displayName' => 'Aufdruck',
+                    'type' => 'select'
                 ]
             ]
         ]);
@@ -181,13 +120,15 @@ class ProductCategorySeeder extends Seeder
             'filters' => [
                 'type' => [
                     'displayName' => 'Taschentyp',
-                    'type' => 'select',
-                    'options' => ['Handtasche', 'Umhängetasche', 'Rucksack', 'Clutch', 'Shopper', 'Tote']
+                    'type' => 'select'
                 ],
                 'material' => [
                     'displayName' => 'Material',
-                    'type' => 'select',
-                    'options' => ['Leder', 'Kunstleder', 'Baumwolle', 'Nylon', 'Stroh']
+                    'type' => 'select'
+                ],
+                'print' => [
+                    'displayName' => 'Aufdruck',
+                    'type' => 'select'
                 ]
             ]
         ]);

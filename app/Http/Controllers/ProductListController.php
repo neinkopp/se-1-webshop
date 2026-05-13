@@ -15,7 +15,7 @@ class ProductListController extends Controller {
         $selected_category = [];
 
         if ($request->filled('category')) {
-            $selected_category = ProductCategory::where("category_id", "=", $request->query("category"), false)->first();
+            $selected_category = ProductCategoryController::getWithFilters($request->query("category"));
             if ($selected_category) {
                 $productQuery->where("category_id", "=", $request->query("category"));
                 $filterNames = array_keys($selected_category["filters"]);
@@ -27,10 +27,7 @@ class ProductListController extends Controller {
                                 $options = $this->sanitizeSelection($request->query($filterNames[$i]), $filter["options"]);
                                 $productQuery->where(function ($query) use ($options, $filterNames, $i) {
                                     foreach ($options as $option) {
-                                        $query->orWhereJsonContains(
-                                            "attributes->properties->{$filterNames[$i]}",
-                                            $option
-                                        );
+                                        $query->orWhereJsonContains("attributes->properties->{$filterNames[$i]}", $option);
                                     }
                                 });
                             }
@@ -82,6 +79,7 @@ class ProductListController extends Controller {
                 'bindings' => $productQuery->getBindings(),
             ]);
         }
+
         $categories = ProductCategory::all();
         
         return view("product-list", compact(
@@ -122,7 +120,7 @@ class ProductListController extends Controller {
     }
 
     private function sanitizeColorSelection(array $selection, array $options):array {
-        $colorOptions = array_column($options, 'name');
+        $colorOptions = array_column($options, 'displayName');
         return array_intersect($selection, $colorOptions);
     }
 }

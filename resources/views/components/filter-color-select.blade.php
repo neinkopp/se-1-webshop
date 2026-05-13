@@ -11,16 +11,16 @@
         <input
             type="checkbox"
             name="color[]"
-            value="{{ $color['name'] }}"
-            {{ in_array($color['name'], $selected) ? 'checked' : '' }}
+            value="{{ $color['displayName'] }}"
+            {{ in_array($color['displayName'], $selected) ? 'checked' : '' }}
         >
 
         {{-- COLOR PREVIEW --}}
-        <div class="w-5 h-5 rounded-full border" style="background-color: #{{ $color['value'] }}ff"></div>
+        <div class="w-5 h-5 rounded-full border" style="background-color: {{ $color['value'] }}ff"></div>
 
         {{-- ACCESSIBLE LABEL --}}
         <span>
-            {{ $color['name'] }}
+            {{ $color['displayName'] }}
         </span>
 
     </div>
