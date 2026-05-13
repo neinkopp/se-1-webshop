@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ShoppingBasketPosition extends Model
+class ShoppingCartPosition extends Model
 {
-    protected $table = 'shopping_card_position';
+    protected $table = 'shopping_cart_position';
+    protected $primaryKey = 'position_id';
     public $timestamps = false;
     protected $casts = [
         'selected_options' => 'array',
