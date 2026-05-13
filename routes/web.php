@@ -15,4 +15,4 @@ Route::get('/products/{productHandle}', [ProductController::class, "show"]);
 
 Route::get('/basket', [BasketController::class, "show"]);
 Route::post('/putInBasket', [BasketController::class, "put"]);
-Route::post('/removeFromBasket', [BasketController::class, "remove"]);
+Route::post('/changeBasketItem', [BasketController::class, "change"]);
