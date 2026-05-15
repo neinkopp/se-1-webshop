@@ -1,5 +1,5 @@
 <header
-    class="fixed top-0 left-0 w-full z-50
+    class="w-full z-50
            bg-gradient-to-r from-sky-400 to-blue-800
            shadow-lg"
 >

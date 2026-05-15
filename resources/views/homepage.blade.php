@@ -1,102 +1,93 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    @include('partials.head')
+    <body class="bg-gray-50 text-gray-800 h-screen flex flex-col overflow-x-hidden">
+        <div x-data="{mobileMenuOpen: false, sidebarOpen: false}" class="h-screen flex flex-col h-full overflow-x-hidden">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+            {{-- HEADER --}}
+            <x-header>
+                <x-slot:actionsSlot>
+                    <x-header-actions />
+                </x-slot:actionsSlot>
 
-    {{-- AlpineJS --}}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+                <x-slot:behaviorSlot>
+                    <x-header-actions-mobile />
+                </x-slot:behaviorSlot>
+            </x-header>
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
-</head>
+            {{-- MAIN AREA --}}
+            <div class="flex flex-1 overflow-hidden">
 
-<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+                {{-- SIDEBAR --}}
+                <x-sidebar title="Filter">
+                    <x-filter-container
+                        :filters="[]"
+                        :category="''"
+                    />
+                </x-sidebar>
 
-<div
-    x-data="{
-        mobileMenuOpen: false,
-        sidebarOpen: false
-    }"
->
+                <div class="flex flex-1 overflow-hidden flex-col">
 
-    {{-- HEADER --}}
-    <x-header>
-        <x-slot:actionsSlot>
-            <x-header-actions />
-        </x-slot:actionsSlot>
-        <x-slot:behaviorSlot>
-            <x-header-actions-mobile />
-        </x-slot:behaviorSlot>
-    </x-header>
+                    {{-- CATEGORY HEADER --}}
+                    <x-content-header
+                        :sidePanelTitle="'Filter'"
+                        :categories="$categories"
+                    />
 
-    <div class="flex pt-24">
+                    {{-- SCROLLABLE CONTENT --}}
+                    <main class="flex-1 overflow-y-auto min-w-0">
 
-        <x-sidebar title="Filter">
-            <x-filter-container
-                :filters="[]"
-                :category="''"
-            />
-        </x-sidebar>
+                        {{-- HERO --}}
+                        <x-banner-carousel />
 
-        {{-- MAIN CONTENT --}}
-        <main class="w-full lg:ml-72">
+                        {{-- TITLE --}}
+                        <section class="bg-gradient-to-b from-blue-800 to-blue-500 text-white py-10">
 
-            <x-content-header 
-            :sidePanelTitle="'Filter'"
-            :categories="$categories"
-            />
+                            <div class="px-5 lg:px-10">
 
-            {{-- HERO --}}
-            <x-banner-carousel />
+                                <h1 class="text-2xl sm:text-4xl font-bold mb-3">
+                                    BHH-Webshop
+                                </h1>
 
-            {{-- TITLE --}}
-            <section class="bg-gradient-to-b from-blue-800 to-blue-500 text-white py-10">
+                                <p class="text-blue-100 text-sm sm:text-lg">
+                                    Willkommen im offiziellen Online-Shop der Beruflichen Hochschule Hamburg (BHH).
+                                </p>
 
-                <div class="px-5 lg:px-10">
+                            </div>
 
-                    <h1 class="text-2xl sm:text-4xl font-bold mb-3">
-                        BHH-Webshop
-                    </h1>
+                        </section>
 
-                    <p class="text-blue-100 text-sm sm:text-lg">
-                        Willkommen im offiziellen Online-Shop der Beruflichen Hochschule Hamburg (BHH).
-                    </p>
+                        {{-- PRODUCTS --}}
+                        <section class="py-10 px-5 lg:px-10">
 
+                            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-8">
+
+                                @foreach ($products as $product)
+
+                                    <x-product-card
+                                        :productHandle="$product->handle"
+                                        :productDisplayName="$product->name"
+                                        :productDisplayPrice="$product->price"
+                                        :productImagePath="$product->default_pictures[0]['picture_storage_key']"
+                                    />
+
+                                @endforeach
+
+                            </div>
+
+                            {{-- FEATURED --}}
+                            <x-featured-products
+                                :featuredProducts="$featuredProducts"
+                            />
+
+                        </section>
+
+                        {{-- FOOTER --}}
+                        <x-footer />
+
+                    </main>
                 </div>
-
-            </section>
-
-            {{-- PRODUCTS --}}
-            <section class="py-10 px-5 lg:px-10">
-
-                <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-8">
-
-                    @foreach ($products as $product)
-
-                        <x-product-card 
-                            :productHandle="$product->handle"
-                            :productDisplayName="$product->name"
-                            :productDisplayPrice="$product->price"
-                            :productImagePath="$product->default_pictures[0]['picture_storage_key']"
-                        />
-
-                    @endforeach
-
-                </div>
-
-            </section>
-        </main>
-    </div>
-    <x-footer />
-
-</div>
-
-</body>
+            </div>
+        </div>
+    </body>
 </html>
