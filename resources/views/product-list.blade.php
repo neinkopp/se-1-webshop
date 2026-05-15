@@ -80,11 +80,12 @@
                     </section>
                 @endif
 
+            
+
             </section>
         </main>
     </div>
     <x-footer />
-
 </div>
 
 </body>
