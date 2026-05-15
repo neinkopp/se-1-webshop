@@ -44,26 +44,6 @@
 
     </div>
 
-    {{-- LEFT ARROW --}}
-    <button
-        @click="previous()"
-        class="absolute left-4 top-1/2 -translate-y-1/2
-               bg-black/40 hover:bg-black/60
-               text-white rounded-full p-3"
-    >
-        ←
-    </button>
-
-    {{-- RIGHT ARROW --}}
-    <button
-        @click="next()"
-        class="absolute right-4 top-1/2 -translate-y-1/2
-               bg-black/40 hover:bg-black/60
-               text-white rounded-full p-3"
-    >
-        →
-    </button>
-
     {{-- DOTS --}}
     <div
         class="absolute bottom-4 left-1/2
