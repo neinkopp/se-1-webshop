@@ -16,7 +16,7 @@ class ProductCategoryController extends Controller
 
             $categoryFilters = $category->filters;
 
-            $products = Product::where('category_id', '=', 1)->get("attributes");
+            $products = Product::where('category_id', '=', $category_id)->get("attributes");
 
             for($i = 0; $i < count($categoryFilters); $i++) {
                 $filterName = array_keys($categoryFilters)[$i];
