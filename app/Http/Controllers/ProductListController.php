@@ -69,6 +69,8 @@ class ProductListController extends Controller {
         if($request->filled("productName")) {
             $productQuery->whereLike("name", "%".$request->query("productName")."%", false, false, false);
         }
+
+        $featuredProducts = Product::limit(10)->get();
         
         try {
             $products = $productQuery->get();
@@ -85,7 +87,8 @@ class ProductListController extends Controller {
         return view("product-list", compact(
             "products",
             "categories",
-            "selected_category"
+            "selected_category",
+            "featuredProducts"
         ));
     }
 

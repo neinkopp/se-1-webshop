@@ -11,9 +11,11 @@ class HomepageController extends Controller
     public function show() {
         $products = Product::all();
         $categories = ProductCategory::all();
+        $featuredProducts = Product::limit(10)->get();
         return view('homepage', compact(
             'products',
-            'categories'
+            'categories',
+            'featuredProducts'
         ));
     }
 }

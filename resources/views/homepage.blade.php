@@ -93,7 +93,6 @@
 
             </section>
         </main>
-
     </div>
     <x-footer />
 
