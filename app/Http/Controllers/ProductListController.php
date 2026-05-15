@@ -67,7 +67,7 @@ class ProductListController extends Controller {
         }
 
         if($request->filled("productName")) {
-            $productQuery->whereLike("name", "%".$request->query("productName")."%", false, false, false);
+            $productQuery->whereLike("name", "%".$request->query("productName")."%", false);
         }
 
         $featuredProducts = Product::limit(10)->get();

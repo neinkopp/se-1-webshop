@@ -28,6 +28,16 @@ class ProductSeeder extends Seeder
                             'picture_storage_key' => "mockup_product_".fake()->numberBetween(1,5).".png"
                         ]
                     ],
+                    'assets' => [
+                        [
+                            "asset_storage_key" => "designmertens.jpg",
+                            "position" => "back"
+                        ],
+                        [
+                            "asset_storage_key" => "designmertens.jpg",
+                            "position" => "front"
+                        ]
+                    ],
                     'properties' => [
                         'color' => [
                             [
@@ -71,6 +81,12 @@ class ProductSeeder extends Seeder
                     'default_pictures' => [
                         [
                             'picture_storage_key' => "mockup_product_".fake()->numberBetween(1,5).".png"
+                        ]
+                    ],
+                    'assets' => [
+                        [
+                            "asset_storage_key" => "designmertens.jpg",
+                            "position" => "front"
                         ]
                     ],
                     'properties' => [
@@ -125,6 +141,12 @@ class ProductSeeder extends Seeder
                     ],
                     [
                         'picture_storage_key' => "mockup_product_2_3.png"
+                    ]
+                ],
+                'assets' => [
+                    [
+                    "asset_storage_key" => "designmertens.jpg",
+                    "position" => "back"
                     ]
                 ],
                 'properties' => [
