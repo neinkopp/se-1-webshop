@@ -148,10 +148,13 @@
                                     <span class="font-bold text-xl text-blue-900">{{ number_format($totalPrice, 2) }} $</span>
                                 </div>
 
-                                <div class="pt-4">
-                                    <button class="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3.5 rounded transition shadow-sm">
-                                        Zur Kasse
-                                    </button>
+                                <div class="mt-6">
+                                    <form action="{{ route('checkout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="w-full bg-blue-800 text-white font-bold py-3 rounded hover:bg-blue-700 transition-colors">
+                                            Zur Kasse
+                                        </button>
+                                    </form>
                                 </div>
 
                             </div>
