@@ -10,7 +10,7 @@ class ProductCategoryController extends Controller
 {
     public static function getWithFilters(string $category_id):?ProductCategory {
 
-        $category = ProductCategory::where("category_id", "=", $category_id, false)->first();
+        $category = ProductCategory::where("category_id", "=", $category_id)->first();
 
         if ($category) {
 

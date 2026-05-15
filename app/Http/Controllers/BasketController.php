@@ -11,9 +11,7 @@ class BasketController extends Controller
 {
     public function show()
     {
-        $cartItems = ShoppingCartPosition::with('product.supplier')
-            ->where('session_id', session()->getId())
-            ->get();
+        $cartItems = ShoppingCartPosition::with('product.supplier')->where('session_id', session()->getId())->get();
 
         $cartItemsBySupplier = $cartItems->groupBy('product.supplier.name');
 
@@ -38,7 +36,7 @@ class BasketController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $product = Product::where('handle', '=', $request->input('productHandle'), false)->firstOrFail();
+        $product = Product::where('handle', '=', $request->input('productHandle'))->firstOrFail();
         $productAttributes = $product->attributes["properties"];
         $productAttributeNames = array_keys($productAttributes);
         $productAttributeCount = count($productAttributes);
@@ -79,9 +77,9 @@ class BasketController extends Controller
         }
 
         try {
-            $shoppingCartPosition = ShoppingCartPosition::where('position_id', '=', $request->input('position_id'), false)->firstOrFail();
+            $shoppingCartPosition = ShoppingCartPosition::where('position_id', '=', $request->input('position_id'))->firstOrFail();
             if ($shoppingCartPosition->amount + $request->input('amount') < 1) {
-                ShoppingCartPosition::where('position_id', '=', $request->input('position_id'), false)->delete();
+                ShoppingCartPosition::where('position_id', '=', $request->input('position_id'))->delete();
             } else {
                 $shoppingCartPosition->amount += $request->input('amount');
                 $shoppingCartPosition->save();

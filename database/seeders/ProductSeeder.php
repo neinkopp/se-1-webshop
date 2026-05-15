@@ -52,7 +52,8 @@ class ProductSeeder extends Seeder
                             ]
                         ],
                         'size' => ['XS', 'XL', 'XXL'],
-                        'material' => ['Baumwolle', 'Polyester']
+                        'material' => ['Baumwolle', 'Polyester'],
+                        'print' => ['Prof. Mertens']
                     ]
                 ]
             ]);
@@ -96,7 +97,8 @@ class ProductSeeder extends Seeder
                             ]
                         ],
                         'size' => ['XL', 'L', 'M'],
-                        'material' => ['Leinen', 'Viskose']
+                        'material' => ['Leinen', 'Viskose'],
+                        'print' => ['Prof. Mertens']
                     ]
                 ]
             ]);
@@ -159,7 +161,8 @@ class ProductSeeder extends Seeder
                         ]
                     ],
                     'size' => ['XL', 'L', 'M'],
-                    'material' => ['Baumwolle', 'Leinen', 'Viskose']
+                    'material' => ['Baumwolle', 'Leinen', 'Viskose'],
+                    'print' => ['Prof. Mertens']
                 ]
             ]
         ]);

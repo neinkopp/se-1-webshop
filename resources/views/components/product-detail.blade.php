@@ -111,7 +111,7 @@ async function validateForm(event) {
                                 </button>
                             @endforeach
                             <input id="attribute_color" name="color" :value="selectedColor" hidden>                   
-                        @else
+                        @elseif(array_keys($product->attributes['properties'])[$i] !== 'print')
                             <x-dropdown-list :name="array_keys($product->attributes['properties'])[$i]">
                                 @foreach ($product->attributes['properties'][array_keys($product->attributes['properties'])[$i]]['values'] as $attribute)
                                     <x-dropdown-option 
@@ -138,7 +138,7 @@ async function validateForm(event) {
             <input name="productHandle" value="{{ $product->handle }}" hidden>
 
             {{-- PRICE --}}
-            <div class="text-5xl font-bold text-blue-900 mb-6">
+            <div class="text-3xl font-bold text-blue-900 mb-6">
                 {{ $product->price }}€
             </div>
 
@@ -174,6 +174,25 @@ async function validateForm(event) {
                 </p>
 
             </div>
+
+            <div
+            <div class="mt-10 border rounded-2xl p-6 bg-white">
+
+                <h2 class="text-2x3 font-bold mb-4 text-blue-950">
+                    Aufdrücke
+                </h2>
+
+                <p class="text-gray-700 leading-relaxed">
+                    @foreach($product->attributes['properties']['print']['values'] as $print)
+                        <span class="inline-flex items-center px-2 py-1 ring-1 ring-inset ring-default text-heading text-sm font-medium rounded bg-neutral-primary-soft">
+                            {{ $print }}
+                        </span>
+                    @endforeach
+                </p>
+
+            </div>
+
+            <div
 
             {{-- PRODUCER --}}
             <div class="mt-6 text-xl font-semibold">
