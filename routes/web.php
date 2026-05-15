@@ -22,3 +22,4 @@ Route::post('/basket/remove', [BasketController::class, 'remove'])->name('basket
 
 Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 Route::get('/orders/{token}', [OrderController::class, 'show'])->name('orders.show');
+Route::get('/orders', [OrderController::class, 'showForm']);

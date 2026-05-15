@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-	public function show(Request $request, $token)
+	public function show($token)
 	{
 		$invoice = Invoice::where('token', $token)->with('positions.product.supplier')->firstOrFail();
 
@@ -22,5 +22,9 @@ class OrderController extends Controller
 			'cartItemsBySupplier' => $cartItemsBySupplier,
 			'totalPrice' => $totalPrice,
 		]);
+	}
+
+	public function showForm() {
+		return view('order-form');
 	}
 }
