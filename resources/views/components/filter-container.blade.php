@@ -1,6 +1,6 @@
 {{-- FILTERS --}}
 @props(['filters', 'category'])
-<form method="GET" action="{{ url()->current() }}">
+<form method="GET" action="/products">
     <x-filter-section title="Preis">
             <x-filter-range
                 :min="''"
