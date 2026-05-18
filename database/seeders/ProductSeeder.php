@@ -686,7 +686,7 @@ class ProductSeeder extends Seeder
                        
                     ],
                     'size' => ['XL', 'L', 'M', 'S'],
-                    'print' => ['Mertens']
+                    'print' => ['BHH']
                 ]
             ]
         ]);
