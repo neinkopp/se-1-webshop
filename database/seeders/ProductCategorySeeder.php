@@ -70,7 +70,7 @@ class ProductCategorySeeder extends Seeder
                     'type' => 'select'
                 ],
              
-                ],
+               
                 'print' => [
                     'displayName' => 'Aufdruck',
                     'type' => 'select'
