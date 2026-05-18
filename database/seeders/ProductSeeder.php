@@ -348,7 +348,7 @@ class ProductSeeder extends Seeder
             'category_id' => '5',
             'supplier_name' => "aespa",
             'name' => "BHH-Tasche",
-            'handle' => "mertens_tasche",
+            'handle' => "bhh_tasche",
             'description' => "Wer bei dieser Stofftasche nicht neidisch wird, dem ist auch nicht mehr zu helfen! Ob Einkauf, Bücherabgabe oder Handgepäck, diese Tasche ist für jegliche Aufgabe genau richtig.",
             'price' => fake()->numberBetween(29,30),
             'attributes' => [
