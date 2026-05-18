@@ -527,7 +527,7 @@ class ProductSeeder extends Seeder
             'attributes' => [
                 'default_pictures' => [
                     [
-                        'picture_storage_key' => "BHH_Sneaker-Weiß.png"
+                        'picture_storage_key' => "BHH-Sneaker-Weiß.png"
                     ],
                  
                     
@@ -545,7 +545,7 @@ class ProductSeeder extends Seeder
                             'value' => '#ffffffff',
                             'pictures' => [
                                 [
-                                    'picture_storage_key' => "BHH_Sneaker-Weiß.png"
+                                    'picture_storage_key' => "BHH-Sneaker-Weiß.png"
                                 ]
                             ],
                             'externalId' => 'asduashkwda'
