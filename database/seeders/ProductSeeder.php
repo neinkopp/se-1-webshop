@@ -51,20 +51,26 @@ class ProductSeeder extends Seeder
                     'color' => [
                         [
                             'displayName' => 'weiß',
-                            'value' => '#ffffffff',
+                            'value' => '#ffffff',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "Mertens-Shirt-Weiß-Vorne.png"
+                                ],
+                                [
+                                    'picture_storage_key' => "BHH-Shirt-Weiß-Hinten.png"
                                 ]
                             ],
                             'externalId' => 'asduashkwda'
                         ],
                         [
                             'displayName' => 'schwarz',
-                            'value' => '#000000ff',
+                            'value' => '#000000',
                             'pictures' => [
                                 [
-                                    'picture_storage_key' => "Mertens-Shirt-Schwarz-Hinten.png"
+                                    'picture_storage_key' => "Mertens-Shirt-Schwarz-Vorne.png"
+                                ],
+                                [
+                                    'picture_storage_key' => "BHH-Shirt-Schwarz-Hinten.png"
                                 ]
                             ],
                             'externalId' => 'asduawhkdaa'
@@ -115,18 +121,24 @@ class ProductSeeder extends Seeder
                     'color' => [
                         [
                             'displayName' => 'weiß',
-                            'value' => '#ffffffff',
+                            'value' => '#ffffff',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "BHH-Shirt-Weiß-Vorne.png"
+                                ],
+                                [
+                                    'picture_storage_key' => "BHH-Shirt-Weiß-Hinten.png"
                                 ]
                             ],
                             'externalId' => 'asduashkwda'
                         ],
                         [
                             'displayName' => 'schwarz',
-                            'value' => '#000000ff',
+                            'value' => '#000000',
                             'pictures' => [
+                                [
+                                    'picture_storage_key' => "BHH-Shirt-Schwarz-Vorne.png"
+                                ],
                                 [
                                     'picture_storage_key' => "BHH-Shirt-Schwarz-Hinten.png"
                                 ]
@@ -182,20 +194,26 @@ class ProductSeeder extends Seeder
                     'color' => [
                         [
                             'displayName' => 'weiß',
-                            'value' => '#ffffffff',
+                            'value' => '#ffffff',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "Mertens-Hoodie-Weiß-Vorne.png"
+                                ],
+                                [
+                                    'picture_storage_key' => "BHH-Hoodie-Weiß-Hinten.png"
                                 ]
                             ],
                             'externalId' => 'asduashkwda'
                         ],
                         [
                             'displayName' => 'schwarz',
-                            'value' => '#000000ff',
+                            'value' => '#000000',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "Mertens-Hoodie-Schwarz-Vorne.png"
+                                ],
+                                [
+                                    'picture_storage_key' => "BHH-Hoodie-Schwarz-Hinten.png"
                                 ]
                             ],
                             'externalId' => 'asduawhkdaa'
@@ -247,20 +265,26 @@ class ProductSeeder extends Seeder
                     'color' => [
                         [
                             'displayName' => 'weiß',
-                            'value' => '#ffffffff',
+                            'value' => '#ffffff',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "BHH-Hoodie-Weiß-Vorne.png"
+                                ],
+                                [
+                                    'picture_storage_key' => "BHH-Hoodie-Weiß-Hinten.png"
                                 ]
                             ],
                             'externalId' => 'asduashkwda'
                         ],
                         [
                             'displayName' => 'schwarz',
-                            'value' => '#000000ff',
+                            'value' => '#000000',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "BHH-Hoodie-Schwarz-Vorne.png"
+                                ],
+                                [
+                                    'picture_storage_key' => "BHH-Hoodie-Schwarz-Hinten.png"
                                 ]
                             ],
                             'externalId' => 'asduawhkdaa'
@@ -305,7 +329,7 @@ class ProductSeeder extends Seeder
                     'color' => [
                         [
                             'displayName' => 'weiß',
-                            'value' => '#ffffffff',
+                            'value' => '#ffffff',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "Mertens-Tasche-Weiß.png"
@@ -315,7 +339,7 @@ class ProductSeeder extends Seeder
                         ],
                         [
                             'displayName' => 'schwarz',
-                            'value' => '#000000ff',
+                            'value' => '#000000',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "Mertens-Tasche-Schwarz.png"
@@ -325,7 +349,7 @@ class ProductSeeder extends Seeder
                         ],
                         [
                             'displayName' => 'blau',
-                            'value' => '#20157aff',
+                            'value' => '#20157a',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "Mertens-Tasche-Blau.png"
@@ -374,7 +398,7 @@ class ProductSeeder extends Seeder
                     'color' => [
                         [
                             'displayName' => 'weiß',
-                            'value' => '#ffffffff',
+                            'value' => '#ffffff',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "BHH-Tasche-Weiß.png"
@@ -384,7 +408,7 @@ class ProductSeeder extends Seeder
                         ],
                         [
                             'displayName' => 'schwarz',
-                            'value' => '#000000ff',
+                            'value' => '#000000',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "BHH-Tasche-Schwarz.png"
@@ -394,7 +418,7 @@ class ProductSeeder extends Seeder
                         ],
                         [
                             'displayName' => 'blau',
-                            'value' => '#20157aff',
+                            'value' => '#20157a',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "BHH-Tasche-Blau.png"
@@ -542,7 +566,7 @@ class ProductSeeder extends Seeder
                     'color' => [
                         [
                             'displayName' => 'weiß',
-                            'value' => '#ffffffff',
+                            'value' => '#ffffff',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "BHH-Sneaker-Weiß.png"
@@ -587,7 +611,7 @@ class ProductSeeder extends Seeder
                     'color' => [
                         [
                             'displayName' => 'blau',
-                            'value' => '#130f47ff',
+                            'value' => '#130f47',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "Mertens-Jacke-Blau.png"
@@ -597,7 +621,7 @@ class ProductSeeder extends Seeder
                         ],
                         [
                             'displayName' => 'schwarz',
-                            'value' => '#000000ff',
+                            'value' => '#000000',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "Mertens-Jacke-Schwarz.png"
@@ -643,7 +667,7 @@ class ProductSeeder extends Seeder
                     'color' => [
                         [
                             'displayName' => 'blau',
-                            'value' => '#130f47ff',
+                            'value' => '#130f47',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "BHH-Jacke-Blau.png"
@@ -653,7 +677,7 @@ class ProductSeeder extends Seeder
                         ],
                         [
                             'displayName' => 'schwarz',
-                            'value' => '#000000ff',
+                            'value' => '#000000',
                             'pictures' => [
                                 [
                                     'picture_storage_key' => "BHH-Jacke-Schwarz.png"
