@@ -459,7 +459,7 @@ class ProductSeeder extends Seeder
                 ],
                'properties' => [
                     
-                    'kartenspieltyp' => ['Uno', 'Skat'],
+                    'Kartenspieltyp' => ['Skat'],
                     'print' => ['Prof. Mertens']
                 ]
             ]
@@ -490,7 +490,7 @@ class ProductSeeder extends Seeder
                 ],
                'properties' => [
                   
-                    'kartenspieltyp' => ['Uno', 'Skat'],
+                    'Kartenspieltyp' => ['Skat'],
                     'print' => ['BHH']
                 ]
             ]
@@ -532,8 +532,7 @@ class ProductSeeder extends Seeder
                        
                        
                     ],
-                    'shoe_size' => ['41', '40', '39'],
-                    'material' => ['Baumwolle', 'Leinen', 'Viskose'],
+                   'shoe_size' => ['45','44','43','42','41', '40', '39','38'],
                     'print' => ['Prof.Mertens']
                 ]
             ]
@@ -576,8 +575,7 @@ class ProductSeeder extends Seeder
                         ],
                       
                     ],
-                    'shoe_size' => ['41', '40', '39'],
-                    'material' => ['Baumwolle', 'Leinen', 'Viskose'],
+                    'shoe_size' => ['45','44','43','42','41', '40', '39','38'],
                     'print' => ['BHH']
                 ]
             ]
