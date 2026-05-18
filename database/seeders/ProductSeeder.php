@@ -690,6 +690,145 @@ class ProductSeeder extends Seeder
                 ]
             ]
         ]);
+         Product::create([
+                'id' => fake()->uuid(),
+                'category_id' => '1',
+                'supplier_name' => "le_sserafim",
+                'name' => "AStA-Shirt",
+                'handle' => "asta_shirt",
+                'description' => "Ein schlichtes Tshirt mit dem Aufdruck des AStAs. Schlicht, bequem und dennoch schick, 100% Baumwolle, perfekt für die nächste Vorlesung!",
+                'price' => fake()->numberBetween(29,30),
+                'attributes' => [
+                    'default_pictures' => [
+                        [
+                            'picture_storage_key' => "asta-Shirt-Blau-Vorne.png"
+                        ],
+                        [
+                            'picture_storage_key' => "asta-Shirt-Blau-Hinten.png"
+                        ],
+                        [
+                            'picture_storage_key' => "asta-Shirt-Rot-Vorne.png"
+                        ],
+                        [
+                            'picture_storage_key' => "asta-Shirt-Rot-Hinten.png"
+                        ]
+                    ],
+                    'assets' => [
+                        [
+                            "asset_storage_key" => "asta-logo.png",
+                            "position" => "front"
+                        ],
+                        [
+                            "asset_storage_key" => "BHH-Logo.png",
+                            "position" => "back"
+                        ]
+                    ],
+                   'properties' => [
+                    'color' => [
+                        [
+                            'displayName' => 'blau',
+                            'value' => '#2c0866',
+                            'pictures' => [
+                                [
+                                    'picture_storage_key' => "asta-Shirt-Blau-Vorne.png"
+                                ],
+                                [
+                                    'picture_storage_key' => "asta-Shirt-Blau-Hinten.png"
+                                ]
+                            ],
+                            'externalId' => 'asduashkwda'
+                        ],
+                        [
+                            'displayName' => 'rot',
+                            'value' => '#c20d0d',
+                            'pictures' => [
+                                [
+                                    'picture_storage_key' => "asta-Shirt-Rot-Vorne.png"
+                                ],
+                                [
+                                    'picture_storage_key' => "asta-Shirt-Rot-Hinten.png"
+                                ]
+                            ],
+                            'externalId' => 'asduawhkdaa'
+                        ],
+                       
+                    ],
+                        'size' => ['XL', 'L', 'M','S'],
+                        'material' => ['Baumwolle'],
+                        'print' => ['AStA']
+                    ]
+                ]
+            ]);
+
+             Product::create([
+                'id' => fake()->uuid(),
+                'category_id' => '2',
+                'supplier_name' => "le_sserafim",
+                'name' => "AStA-Hoodie",
+                'handle' => "asta_hoodie",
+                'description' => "Angenehm warmer kuscheliger Baumwollhoodie mit Aufdruck des AStAs. Wie cool! Für alle, die im Winter die Vorlesungen überstehen möchten!",
+                'price' => fake()->numberBetween(29,30),
+                'attributes' => [
+                    'default_pictures' => [
+                        [
+                            'picture_storage_key' => "asta-Hoodie-Blau-Vorne.png"
+                        ],
+                        [
+                            'picture_storage_key' => "asta-Hoodie-Blau-Hinten.png"
+                        ],
+                        [
+                            'picture_storage_key' => "asta-Hoodie-Rot-Vorne.png"
+                        ],
+                        [
+                            'picture_storage_key' => "asta-Hoodie-Rot-Hinten.png"
+                        ]
+                    ],
+                    'assets' => [
+                        [
+                            "asset_storage_key" => "asta-logo.png",
+                            "position" => "front"
+                        ],
+                        [
+                            "asset_storage_key" => "BHH-Logo.png",
+                            "position" => "back"
+                        ]
+                    ],
+                   'properties' => [
+                    'color' => [
+                        [
+                            'displayName' => 'blau',
+                            'value' => '#2c0866',
+                            'pictures' => [
+                                [
+                                    'picture_storage_key' => "asta-Hoodie-Blau-Vorne.png"
+                                ],
+                                [
+                                    'picture_storage_key' => "asta-Hoodie-Blau-Hinten.png"
+                                ]
+                            ],
+                            'externalId' => 'asduashkwda'
+                        ],
+                        [
+                            'displayName' => 'rot',
+                            'value' => '#c20d0d',
+                            'pictures' => [
+                                [
+                                    'picture_storage_key' => "asta-Hoodie-Rot-Vorne.png"
+                                ],
+                                [
+                                    'picture_storage_key' => "asta-Hoodie-Rot-Hinten.png"
+                                ]
+                            ],
+                            'externalId' => 'asduawhkdaa'
+                        ],
+                       
+                    ],
+                        'size' => ['XL', 'L', 'M','S'],
+                        'material' => ['Baumwolle'],
+                        'print' => ['AStA']
+                    ]
+                ]
+            ]);
     }
     }
 

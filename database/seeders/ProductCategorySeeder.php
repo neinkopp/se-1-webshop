@@ -69,9 +69,7 @@ class ProductCategorySeeder extends Seeder
                     'displayName' => 'Schuhgröße',
                     'type' => 'select'
                 ],
-                'material' => [
-                    'displayName' => 'Material',
-                    'type' => 'select'
+             
                 ],
                 'print' => [
                     'displayName' => 'Aufdruck',
@@ -94,10 +92,7 @@ class ProductCategorySeeder extends Seeder
                     'type' => 'select'
                
                 ],
-                'waterproof' => [
-                    'displayName' => 'Wasserdicht',
-                    'type' => 'select'
-                ],
+               
                 'print' => [
                     'displayName' => 'Aufdruck',
                     'type' => 'select'
@@ -129,12 +124,7 @@ class ProductCategorySeeder extends Seeder
             'category_id' => 6,
             'name' => 'Kartenspiel',
             'filters' => [
-                'type' => [
-                    'displayName' => 'Kartenspieltyp',
-                    'type' => 'select'
                 
-    
-                ],
                 'print' => [
                     'displayName' => 'Aufdruck',
                     'type' => 'select'
