@@ -10,7 +10,7 @@ class CheckoutController extends Controller
 	{
 		try {
 			$invoice = CheckoutService::checkout();
-			redirect()->route('orders.show', ['token' => $invoice->token]);
+			return redirect()->route('orders.show', ['token' => $invoice->token]);
 		} catch(\Throwable $e) {
 			return response()->json([
                 'status' => 'failure',
