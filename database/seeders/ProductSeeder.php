@@ -82,8 +82,8 @@ class ProductSeeder extends Seeder
                 'id' => fake()->uuid(),
                 'category_id' => '1',
                 'supplier_name' => "le_sserafim",
-                'name' => "Mertens-Shirt",
-                'handle' => "mertens_shirt",
+                'name' => "BHH-Shirt",
+                'handle' => "bhh_shirt",
                 'description' => "Ein schlichtes Tshirt mit dem Aufdruck Ihrer Lieblingshochschule. Schlicht, bequem und dennoch schick, 100% Baumwolle, perfekt für die nächste Vorlesung!",
                 'price' => fake()->numberBetween(29,30),
                 'attributes' => [
