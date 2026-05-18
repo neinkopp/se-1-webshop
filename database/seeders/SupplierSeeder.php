@@ -14,11 +14,19 @@ class SupplierSeeder extends Seeder
     public function run(): void
     {
         Supplier::create([
-            'supplier_name' => 'mock_supplier_1',
-            'website' => 'supplier_1.de',
-            'email' => 'supplier1@mock.de',
+            'supplier_name' => 'le_sserafim',
+            'website' => 'Le.Sserafim.de',
+            'email' => 'lesserafim@gmail.de',
             'telephone' => '+49 123 456789 1',
-            'display_name' => 'Mock Supplier 1 GmbH'
+            'display_name' => 'Le Sserafim'
+        ]);
+
+         Supplier::create([
+            'supplier_name' => 'aespa',
+            'website' => 'Aespa.de',
+            'email' => 'info@aespa.de',
+            'telephone' => '+49 123 456789 2',
+            'display_name' => 'Aespa'
         ]);
     }
 }

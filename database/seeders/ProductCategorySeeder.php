@@ -32,26 +32,20 @@ class ProductCategorySeeder extends Seeder
                 ]
             ]
         ]);
-
-        // Hosen
-        ProductCategory::create([
+  ProductCategory::create([
             'category_id' => 2,
-            'name' => 'Hosen',
+            'name' => 'Hoodies',
             'filters' => [
                 'color' => [
                     'displayName' => 'Farbe',
                     'type' => 'color'
                 ],
-                'waist_size' => [
-                    'displayName' => 'Bundweite',
+                'size' => [
+                    'displayName' => 'Größe',
                     'type' => 'select'
                 ],
-                'length' => [
-                    'displayName' => 'Länge',
-                    'type' => 'select'
-                ],
-                'fit' => [
-                    'displayName' => 'Passform',
+                'material' => [
+                    'displayName' => 'Material',
                     'type' => 'select'
                 ],
                 'print' => [
@@ -60,7 +54,8 @@ class ProductCategorySeeder extends Seeder
                 ]
             ]
         ]);
-
+    
+      
         // Schuhe
         ProductCategory::create([
             'category_id' => 3,
@@ -97,10 +92,7 @@ class ProductCategorySeeder extends Seeder
                 'size' => [
                     'displayName' => 'Größe',
                     'type' => 'select'
-                ],
-                'warmth_level' => [
-                    'displayName' => 'Wärmegrad',
-                    'type' => 'select'
+               
                 ],
                 'waterproof' => [
                     'displayName' => 'Wasserdicht',
@@ -118,9 +110,9 @@ class ProductCategorySeeder extends Seeder
             'category_id' => 5,
             'name' => 'Taschen',
             'filters' => [
-                'type' => [
-                    'displayName' => 'Taschentyp',
-                    'type' => 'select'
+                'color' => [
+                    'displayName' => 'Farbe',
+                    'type' => 'color'
                 ],
                 'material' => [
                     'displayName' => 'Material',
@@ -131,6 +123,26 @@ class ProductCategorySeeder extends Seeder
                     'type' => 'select'
                 ]
             ]
+       
+      ]); 
+      ProductCategory::create([
+            'category_id' => 6,
+            'name' => 'Kartenspiel',
+            'filters' => [
+                'type' => [
+                    'displayName' => 'Kartenspieltyp',
+                    'type' => 'select'
+                
+    
+                ],
+                'print' => [
+                    'displayName' => 'Aufdruck',
+                    'type' => 'select'
+                ]
+            ]
         ]);
+         
+        
+    
     }
 }
