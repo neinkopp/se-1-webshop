@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @include('partials.head')
+
 <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col overflow-x-hidden">
 
 	<div
@@ -90,12 +91,16 @@
 
 							{{-- BUTTON ZUM ANBIETER --}}
 							<div class="p-4 border-t border-gray-100 flex justify-end">
-								<a href="#" class="inline-flex items-center gap-2 border border-blue-900 text-blue-900 px-5 py-2 rounded hover:bg-gray-50 transition font-medium text-sm">
-									Zum Anbieter
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
-										<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-									</svg>
-								</a>
+								<form action="{{ route('payment') }}" method="post" target="_blank">
+									<input type="hidden" name="invoice_id" value="{{ $invoice->invoice_id }}">
+									<input type="hidden" name="supplier_name" value="{{ $items[0]->product->supplier_name }}">
+									<button type="submit" class="inline-flex items-center gap-2 border border-blue-900 text-blue-900 px-5 py-2 rounded hover:bg-gray-50 transition font-medium text-sm">
+										Zum Anbieter
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+											<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+										</svg>
+									</button>
+								</form>
 							</div>
 						</div>
 						@empty

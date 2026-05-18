@@ -2,61 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Product;
-use App\Models\ShoppingCartPosition;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\ChangeBasketItemRequest;
+use App\Http\Requests\DeleteBasketItemRequest;
+use App\Http\Requests\PutInBasketRequest;
+use App\Services\ResourceServices\BasketService;
 
 class BasketController extends Controller
 {
     public function show()
     {
-        $cartItems = ShoppingCartPosition::with('product.supplier')->where('session_id', session()->getId())->get();
+        $basketInformation = BasketService::getBasketInformation();
 
-        $cartItemsBySupplier = $cartItems->groupBy('product.supplier.name');
-
-        $totalPrice = $cartItems->sum(function ($item) {
-            return $item->product->price * $item->amount;
-        });
-
-        $totalItems = $cartItems->sum('amount');
+        $cartItemsBySupplier = $basketInformation['items'];
+        $totalPrice = $basketInformation['totalPrice'];
+        $totalItems = $basketInformation['totalItems'];
 
         return view('basket', compact('cartItemsBySupplier', 'totalPrice', 'totalItems'));
     }
 
-    public function put(Request $request)
+    public function put(PutInBasketRequest $request)
     {
-        $rules = [
-            'productHandle' => 'required|string|max:255',
-            'amount' => 'required|integer|min:1'
-        ];
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
-
-        $product = Product::where('handle', '=', $request->input('productHandle'))->firstOrFail();
-        $productAttributes = $product->attributes["properties"];
-        $productAttributeNames = array_keys($productAttributes);
-        $productAttributeCount = count($productAttributes);
-        $selectedOptions["properties"] = [];
-        for ($i = 0; $i < $productAttributeCount; $i++) {
-            $currentAttributeName = $productAttributeNames[$i];
-            if ($request->filled($currentAttributeName)) {
-                $selectedOptions["properties"][$currentAttributeName] = $request->input($currentAttributeName);
-            }
-        }
-        $amount = $request->input('amount');
-
+        $requestedData = $request->validated();
         try {
-            $basketQuery = ShoppingCartPosition::create(['session_id' => session()->getId(), 'product_id' => $product->id, 'amount' => $amount, 'selected_options' => $selectedOptions]);
+
+            $newCartItem = BasketService::addItemToCart($requestedData['productHandle'], $requestedData['amount'], $request->all());
 
             return response()->json([
                 'status' => 'success',
                 'message' => 'success'
             ], 201);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return response()->json([
                 'status' => 'failure',
                 'message' => $e->getMessage()
@@ -64,46 +39,38 @@ class BasketController extends Controller
         }
     }
 
-    public function change(Request $request)
+    public function change(ChangeBasketItemRequest $request)
     {
-        $rules = [
-            'position_id' => 'required|integer|min:1',
-            'amount' => 'required|integer'
-        ];
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
-
+        $requestedData = $request->validated();
         try {
-            $shoppingCartPosition = ShoppingCartPosition::where('position_id', '=', $request->input('position_id'))->firstOrFail();
-            if ($shoppingCartPosition->amount + $request->input('amount') < 1) {
-                ShoppingCartPosition::where('position_id', '=', $request->input('position_id'))->delete();
-            } else {
-                $shoppingCartPosition->amount += $request->input('amount');
-                $shoppingCartPosition->save();
-            }
-        } catch (\Exception $e) {
+
+            BasketService::updateItemQuantity($requestedData['position_id'], $requestedData['amount']);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'success'
+            ], 201);
+        } catch (\Throwable $e) {
             return response()->json([
                 'status' => 'failure',
                 'message' => $e->getMessage()
             ], 500);
         }
-        return response()->json([
-            'status' => 'success',
-            'message' => 'success'
-        ], 201);
     }
 
-    public function remove(Request $request)
+    public function remove(DeleteBasketItemRequest $request)
     {
-        $request->validate([
-            'position_id' => 'required|integer|exists:shopping_cart_positions,id',
-        ]);
+        $requestedData = $request->validated();
+        try {
 
-        ShoppingCartPosition::destroy($request->input('position_id'));
+            BasketService::removeItemFromCart($requestedData['position_id']);
 
-        return redirect()->route('basket.show');
+            return redirect()->route('basket.show');
+        } catch (\Throwable $e) {
+            return response()->json([
+                'status' => 'failure',
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 }

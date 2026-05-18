@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 
@@ -23,3 +24,5 @@ Route::post('/basket/remove', [BasketController::class, 'remove'])->name('basket
 Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 Route::get('/orders/{token}', [OrderController::class, 'show'])->name('orders.show');
 Route::get('/orders', [OrderController::class, 'showForm']);
+
+Route::post("/payment", [PaymentController::class, "initatePayment"])->name("payment");
