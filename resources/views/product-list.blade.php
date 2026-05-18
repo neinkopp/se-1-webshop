@@ -17,8 +17,8 @@
 
                 <x-sidebar title="Filter">
                     <x-filter-container
-                        :filters="$selected_category->filters ?? []"
-                        :category="$selected_category->category_id ?? ''"
+                        :filters="$selectedCategory->filters ?? []"
+                        :category="$selectedCategory->category_id ?? ''"
                     />
                 </x-sidebar>
 

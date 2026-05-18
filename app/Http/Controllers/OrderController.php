@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Invoice;
-use Illuminate\Http\Request;
+use App\Services\ResourceServices\OrderService;
 
 class OrderController extends Controller
 {
-	public function show($token)
+	public function show(string $token)
 	{
-		$invoice = Invoice::where('token', $token)->with('positions.product.supplier')->firstOrFail();
-
-		$cartItemsBySupplier = $invoice->positions->groupBy('product.supplier.display_name');
-
-		$totalPrice = $invoice->positions->sum(function ($position) {
-			return $position->amount * $position->price_per_unit;
-		});
+		$orderInformation = OrderService::getOrderInformation($token);
+		$invoice = $orderInformation['invoice'];
+		$cartItemsBySupplier = $orderInformation['items'];
+		$totalPrice = $orderInformation['totalPrice'];
 
 		return view('order', [
 			'invoice' => $invoice,
