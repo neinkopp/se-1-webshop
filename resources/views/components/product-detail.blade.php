@@ -99,29 +99,31 @@ async function validateForm(event) {
             </div>
             <div class="mt-8">
                 @for ($i = 0; $i < count($product->attributes['properties']); $i++)
-                    <h3 class="font-semibold text-lg mb-4">
-                        <label for="attribute_{{ array_keys($product->attributes['properties'])[$i] }}">{{ $product->attributes['properties'][array_keys($product->attributes['properties'])[$i]]['displayName'] }} wählen:</label>
-                    </h3>
-                    <div class="flex flex-wrap gap-6 mb-7">
-                        @if(array_keys($product->attributes['properties'])[$i] == 'color')
-                            @foreach($product->attributes['properties']['color']['values'] as $color)
-                                <button type="button" class="flex flex-col items-center gap-2 group" @click="selectColor('{{ $color['displayName'] }}')">
-                                    <div class="w-10 h-10 rounded-full border-2 border-gray-300 group-hover:scale-110 transition" style="background-color: {{ $color['value'] }}"></div>
-                                    <span class="text-sm text-gray-700">{{ $color['displayName'] }}</span>
-                                </button>
-                            @endforeach
-                            <input id="attribute_color" name="color" :value="selectedColor" hidden>                   
-                        @elseif(array_keys($product->attributes['properties'])[$i] !== 'print')
-                            <x-dropdown-list :name="array_keys($product->attributes['properties'])[$i]">
-                                @foreach ($product->attributes['properties'][array_keys($product->attributes['properties'])[$i]]['values'] as $attribute)
-                                    <x-dropdown-option 
-                                        :value="$attribute"
-                                        :displayText="$attribute"
-                                    />
+                    @if(array_keys($product->attributes['properties'])[$i] !== 'print')
+                        <h3 class="font-semibold text-lg mb-4">
+                            <label for="attribute_{{ array_keys($product->attributes['properties'])[$i] }}">{{ $product->attributes['properties'][array_keys($product->attributes['properties'])[$i]]['displayName'] }} wählen:</label>
+                        </h3>
+                        <div class="flex flex-wrap gap-6 mb-7">
+                            @if(array_keys($product->attributes['properties'])[$i] == 'color')
+                                @foreach($product->attributes['properties']['color']['values'] as $color)
+                                    <button type="button" class="flex flex-col items-center gap-2 group" @click="selectColor('{{ $color['displayName'] }}')">
+                                        <div class="w-10 h-10 rounded-full border-2 border-gray-300 group-hover:scale-110 transition" style="background-color: {{ $color['value'] }}"></div>
+                                        <span class="text-sm text-gray-700">{{ $color['displayName'] }}</span>
+                                    </button>
                                 @endforeach
-                            </x-dropdown-list>
-                        @endif
-                    </div> 
+                                <input id="attribute_color" name="color" :value="selectedColor" hidden>                   
+                            @else
+                                <x-dropdown-list :name="array_keys($product->attributes['properties'])[$i]">
+                                    @foreach ($product->attributes['properties'][array_keys($product->attributes['properties'])[$i]]['values'] as $attribute)
+                                        <x-dropdown-option 
+                                            :value="$attribute"
+                                            :displayText="$attribute"
+                                        />
+                                    @endforeach
+                                </x-dropdown-list>
+                            @endif
+                        </div>
+                    @endif
                 @endfor
             </div>
 
