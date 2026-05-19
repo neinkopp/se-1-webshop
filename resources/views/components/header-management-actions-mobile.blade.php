@@ -7,6 +7,10 @@
         <button @click="mobileMenuOpen = false" class="text-2xl">×</button>
     </div>
     <div class="p-6 space-y-6">
-        <a href="/logout" class="block text-lg hover:text-blue-600">Abmelden</a>
+        <form action="/logout" method="post">
+            <button type="submit" class="block text-lg hover:text-blue-600">
+                Abmelden
+            </button>
+        </form>
     </div>
 </div>
