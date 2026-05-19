@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @include('partials.head')
+
 <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col overflow-x-hidden">
 
     <div
@@ -57,7 +58,7 @@
                                 @foreach ($items as $item)
                                 <div class="p-5 flex flex-col sm:flex-row gap-5">
                                     <div class="w-24 h-24 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center overflow-hidden">
-                                        <img src="{{ $item->product->image ?? 'https://placehold.co/150x150/e2e8f0/475569?text=Bild' }}" alt="{{ $item->product->name }}" class="w-full h-full object-cover">
+                                        <img src="{{ Vite::asset('resources/images/'.$item->product->default_pictures[0]['picture_storage_key']) }}" alt="{{ $item->product->name }}" class="w-full h-full object-cover">
                                     </div>
                                     <div class="flex-1 flex flex-col justify-between">
                                         <div>
@@ -134,7 +135,7 @@
                                 <div class="mt-6">
                                     <form action="{{ route('checkout') }}" method="POST">
                                         @csrf
-                                        <button type="submit" class="w-full bg-blue-800 text-white font-bold py-3 rounded hover:bg-blue-700 transition-colors">
+                                        <button type="submit" class="w-full bg-[#003063] text-white font-bold py-3 rounded hover:bg-blue-800 transition-colors">
                                             Zur Kasse
                                         </button>
                                     </form>

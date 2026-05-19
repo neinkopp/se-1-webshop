@@ -1,93 +1,91 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    @include('partials.head')
-    <body class="bg-gray-50 text-gray-800 h-screen flex flex-col overflow-x-hidden">
-        <div x-data="{mobileMenuOpen: false, sidebarOpen: false}" class="h-screen flex flex-col h-full overflow-x-hidden">
+@include('partials.head')
 
-            {{-- HEADER --}}
-            <x-header>
-                <x-slot:actionsSlot>
-                    <x-header-actions />
-                </x-slot:actionsSlot>
+<body class="bg-gray-50 text-gray-800 h-screen flex flex-col overflow-x-hidden">
+    <div x-data="{mobileMenuOpen: false, sidebarOpen: false}" class="h-screen flex flex-col h-full overflow-x-hidden">
 
-                <x-slot:behaviorSlot>
-                    <x-header-actions-mobile />
-                </x-slot:behaviorSlot>
-            </x-header>
+        {{-- HEADER --}}
+        <x-header>
+            <x-slot:actionsSlot>
+                <x-header-actions />
+            </x-slot:actionsSlot>
 
-            {{-- MAIN AREA --}}
-            <div class="flex flex-1 overflow-hidden">
+            <x-slot:behaviorSlot>
+                <x-header-actions-mobile />
+            </x-slot:behaviorSlot>
+        </x-header>
 
-                {{-- SIDEBAR --}}
-                <x-sidebar title="Filter">
-                    <x-filter-container
-                        :filters="[]"
-                        :category="''"
-                    />
-                </x-sidebar>
+        {{-- MAIN AREA --}}
+        <div class="flex flex-1 overflow-hidden">
 
-                <div class="flex flex-1 overflow-hidden flex-col">
+            {{-- SIDEBAR --}}
+            <x-sidebar title="Filter">
+                <x-filter-container
+                    :filters="[]"
+                    :category="''" />
+            </x-sidebar>
 
-                    {{-- CATEGORY HEADER --}}
-                    <x-content-header
-                        :sidePanelTitle="'Filter'"
-                        :categories="$categories"
-                    />
+            <div class="flex flex-1 overflow-hidden flex-col">
 
-                    {{-- SCROLLABLE CONTENT --}}
-                    <main class="flex-1 overflow-y-auto min-w-0">
+                {{-- CATEGORY HEADER --}}
+                <x-content-header
+                    :sidePanelTitle="'Filter'"
+                    :categories="$categories" />
 
-                        {{-- HERO --}}
-                        <x-banner-carousel />
+                {{-- SCROLLABLE CONTENT --}}
+                <main class="flex-1 overflow-y-auto min-w-0">
 
-                        {{-- TITLE --}}
-                        <section class="bg-gradient-to-b from-blue-800 to-blue-500 text-white py-10">
+                    {{-- HERO --}}
+                    <x-banner-carousel />
 
-                            <div class="px-5 lg:px-10">
+                    {{-- TITLE --}}
+                    <section class="bg-gradient-to-b from-[#003063] to-[#003063] text-white py-10">
 
-                                <h1 class="text-2xl sm:text-4xl font-bold mb-3">
-                                    BHH-Webshop
-                                </h1>
+                        <div class="px-5 lg:px-10">
 
-                                <p class="text-blue-100 text-sm sm:text-lg">
-                                    Willkommen im offiziellen Online-Shop der Beruflichen Hochschule Hamburg (BHH).
-                                </p>
+                            <h1 class="text-2xl sm:text-4xl font-bold mb-3">
+                                BHH-Webshop
+                            </h1>
 
-                            </div>
+                            <p class="text-blue-100 text-sm sm:text-lg">
+                                Willkommen im offiziellen Online-Shop der Beruflichen Hochschule Hamburg (BHH).
+                            </p>
 
-                        </section>
+                        </div>
 
-                        {{-- PRODUCTS --}}
-                        <section class="py-10 px-5 lg:px-10">
+                    </section>
 
-                            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-8">
+                    {{-- PRODUCTS --}}
+                    <section class="py-10 px-5 lg:px-10">
 
-                                @foreach ($products as $product)
+                        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-8">
 
-                                    <x-product-card
-                                        :productHandle="$product->handle"
-                                        :productDisplayName="$product->name"
-                                        :productDisplayPrice="$product->price"
-                                        :productImagePath="$product->default_pictures[0]['picture_storage_key']"
-                                    />
+                            @foreach ($products as $product)
 
-                                @endforeach
+                            <x-product-card
+                                :productHandle="$product->handle"
+                                :productDisplayName="$product->name"
+                                :productDisplayPrice="$product->price"
+                                :productImagePath="$product->default_pictures[0]['picture_storage_key']" />
 
-                            </div>
+                            @endforeach
 
-                            {{-- FEATURED --}}
-                            <x-featured-products
-                                :featuredProducts="$featuredProducts"
-                            />
+                        </div>
 
-                        </section>
+                        {{-- FEATURED --}}
+                        <x-featured-products
+                            :featuredProducts="$featuredProducts" />
 
-                        {{-- FOOTER --}}
-                        <x-footer />
+                    </section>
 
-                    </main>
-                </div>
+                    {{-- FOOTER --}}
+                    <x-footer />
+
+                </main>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

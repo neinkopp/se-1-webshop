@@ -1,4 +1,4 @@
-<footer class="bg-gradient-to-r from-blue-900 to-blue-700 text-white mt-auto">
+<footer class="bg-gradient-to-r from-[#003063] to-[#003063] text-white mt-auto">
 
     <div class="max-w-7xl mx-auto px-6 py-12">
 
@@ -10,8 +10,7 @@
                 <img
                     src="{{ Vite::asset('resources/images/bhh.png') }}"
                     alt="Logo"
-                    class="h-12 mb-4"
-                >
+                    class="h-12 mb-4">
 
                 <p class="text-sm text-blue-100 leading-relaxed">
                     Der offizielle Shop der Beruflichen Hochschule Hamburg.
