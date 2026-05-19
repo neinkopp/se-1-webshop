@@ -21,7 +21,7 @@ class ProductSeeder extends Seeder
                 'name' => "Mertens-Shirt",
                 'handle' => "mertens_shirt",
                 'description' => "Ein schlichtes Tshirt mit dem Aufdruck Ihres Lieblingsprofessoren. Schlicht, bequem und dennoch schick, 100% Baumwolle, perfekt für die nächste Vorlesung!",
-                'price' => 29,99€
+                'price' => 29.99,
                 'attributes' => [
                     'default_pictures' => [
                         [
@@ -91,7 +91,7 @@ class ProductSeeder extends Seeder
                 'name' => "BHH-Shirt",
                 'handle' => "bhh_shirt",
                 'description' => "Ein schlichtes Tshirt mit dem Aufdruck Ihrer Lieblingshochschule. Schlicht, bequem und dennoch schick, 100% Baumwolle, perfekt für die nächste Vorlesung!",
-                'price' => 29,99€
+                'price' => 29.99,
                 'attributes' => [
                     'default_pictures' => [
                         [
@@ -164,7 +164,7 @@ class ProductSeeder extends Seeder
             'name' => "Mertens-Hoodie",
             'handle' => "mertens_hoodie",
             'description' => "Angenehm warmer kuscheliger Baumwollhoodie mit Aufdruck Ihres Lieblingsprofessoren. Für alle, die im Winter die Vorlesungen überstehen möchten!",
-            'price' => 39,99€
+            'price' => 39.99,
             'attributes' => [
                 'default_pictures' => [
                     [
@@ -235,7 +235,7 @@ class ProductSeeder extends Seeder
             'name' => "BHH-Hoodie",
             'handle' => "bhh_hoodie",
             'description' => "Angenehm warmer kuscheliger Baumwollhoodie mit Aufdruck Ihrer Hochschule. Wie cool! Für alle, die im Winter die Vorlesungen überstehen möchten!",
-            'price' => 39,99€
+            'price' => 39.99,
             'attributes' => [
                 'default_pictures' => [
                     [
@@ -305,7 +305,7 @@ class ProductSeeder extends Seeder
             'name' => "Mertens-Tasche",
             'handle' => "mertens_tasche",
             'description' => "Wer bei dieser Stofftasche nicht neidisch wird, dem ist auch nicht mehr zu helfen! Ob Einkauf, Bücherabgabe oder Handgepäck, diese Tasche ist für jegliche Aufgabe genau richtig.",
-            'price' => 49,99€
+            'price' => 49.99,
             'attributes' => [
                 'default_pictures' => [
                     [
@@ -374,7 +374,7 @@ class ProductSeeder extends Seeder
             'name' => "BHH-Tasche",
             'handle' => "bhh_tasche",
             'description' => "Wer bei dieser Stofftasche nicht neidisch wird, dem ist auch nicht mehr zu helfen! Ob Einkauf, Bücherabgabe oder Handgepäck, diese Tasche ist für jegliche Aufgabe genau richtig.",
-            'price' => 49,99€
+            'price' => 49.99,
             'attributes' => [
                 'default_pictures' => [
                     [
@@ -443,7 +443,7 @@ class ProductSeeder extends Seeder
             'name' => "Mertens-Kartenspiel",
             'handle' => "mertens_kartenspiel",
             'description' => "Dieses Kartendeck im Professorendesign ist ein MUSS für jeden Studenten. In der Pause mit dem Professoren ein Ründchen spielen hat noch niemandem geschadet. Mit Glück kommt man auch in der Vorlesung mit durch 😉",
-            'price' => 9,99€
+            'price' => 9.99,
             'attributes' => [
                 'default_pictures' => [
                     [
@@ -473,7 +473,7 @@ class ProductSeeder extends Seeder
             'name' => "BHH-Kartenspiel",
             'handle' => "bhh_kartenspiel",
             'description' => "Dieses Kartendeck im BHH ist ein MUSS für jeden Studenten. In der Pause mit dem Professoren ein Ründchen spielen hat noch niemandem geschadet. Mit Glück kommt man auch in der Vorlesung mit durch 😉",
-            'price' => 9,99€
+            'price' => 9.99,
             'attributes' => [
                 'default_pictures' => [
                     [
@@ -503,7 +503,7 @@ class ProductSeeder extends Seeder
             'name' => "Mertens-Sneaker",
             'handle' => "mertens_sneaker",
             'description' => "Sneaker mit unendlich Drip! Mit diesem Prachtexemplar sind Sie nicht nur der Hit auf dem Campus sondern auch im Alltag. Und nebenbei sind sie auch noch bequem, ein Traum!",
-            'price' => 69,99€
+            'price' => 69.99,
             'attributes' => [
                 'default_pictures' => [
                     [
@@ -546,7 +546,7 @@ class ProductSeeder extends Seeder
             'name' => "BHH-Sneaker",
             'handle' => "bhh_sneaker",
             'description' => "Sneaker mit unendlich Drip! Mit diesem Prachtexemplar sind Sie nicht nur der Hit auf dem Campus sondern auch im Alltag. Und nebenbei sind sie auch noch bequem, ein Traum!",
-            'price' => 69,99€
+            'price' => 69.99,
             'attributes' => [
                 'default_pictures' => [
                     [
@@ -589,7 +589,7 @@ class ProductSeeder extends Seeder
             'name' => "Mertens-Jacke",
             'handle' => "mertens_jacke",
             'description' => "Diese wetterfeste Jacke bringt Sie bei jedem Wetter sicher in Ihre nächste Vorlesung! Regen ist ab sofort keine Ausrede mehr!",
-            'price' => 69,99€
+            'price' => 69.99,
             'attributes' => [
                 'default_pictures' => [
                     [
@@ -643,7 +643,7 @@ class ProductSeeder extends Seeder
             'name' => "BHH-Jacke",
             'handle' => "bhh_jacke",
             'description' => "Diese wetterfeste Jacke bringt Sie bei jedem Wetter sicher in Ihre nächste Vorlesung! Regen ist ab sofort keine Ausrede mehr!",
-            'price' => 69,99€
+            'price' => 69.99,
             'attributes' => [
                 'default_pictures' => [
                     [
@@ -697,7 +697,7 @@ class ProductSeeder extends Seeder
                 'name' => "AStA-Shirt",
                 'handle' => "asta_shirt",
                 'description' => "Ein schlichtes Tshirt mit dem Aufdruck des AStAs. Schlicht, bequem und dennoch schick, 100% Baumwolle, perfekt für die nächste Vorlesung!",
-                'price' => 29,99€
+                'price' => 29.99,
                 'attributes' => [
                     'default_pictures' => [
                         [
@@ -767,7 +767,7 @@ class ProductSeeder extends Seeder
                 'name' => "AStA-Hoodie",
                 'handle' => "asta_hoodie",
                 'description' => "Angenehm warmer kuscheliger Baumwollhoodie mit Aufdruck des AStAs. Wie cool! Für alle, die im Winter die Vorlesungen überstehen möchten!",
-                'price' => 39,99€
+                'price' => 39.99,
                 'attributes' => [
                     'default_pictures' => [
                         [
