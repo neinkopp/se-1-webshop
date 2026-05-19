@@ -8,7 +8,7 @@
             <div>
 
                 <img
-                    src="{{ Vite::asset('resources/images/bhh.png') }}"
+                    src="{{ Vite::asset('resources/images/bhh.svg') }}"
                     alt="Logo"
                     class="h-12 mb-4">
 
