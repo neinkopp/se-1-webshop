@@ -41,7 +41,27 @@
                     <main class="flex-1 overflow-y-auto min-w-0">
 
                         <section class="py-10 px-5 lg:px-10 space-y-8">
-                            All Categories
+                            {{-- PAGE TITLE --}}
+                            <div>
+                                <h1 class="text-3xl font-bold text-blue-900">
+                                    Kategorien verwalten
+                                </h1>
+
+                                <p class="text-gray-500 mt-1">
+                                    Wählen Sie die Kategorie zum Ändern aus, löschen Sie Kategorien oder legen Sie eine neue Kategorie an.
+                                </p>
+                            </div>
+                            <div class="flex flex-1 gap-10 flex-col">
+                                @for ($i = 0; $i < count($categories); $i++)
+                                    <x-management-link
+                                        :label="$categories[$i]->name"
+                                        :href="'/manage/categories/'.$categories[$i]->category_id"
+                                        :deletion_href="'/manage/categories/'.$categories[$i]->category_id.'/delete'"
+                                        :image_name="'basket.svg'"
+                                        :image_background_color="'blue-800'"
+                                    />
+                                @endfor
+                            </div>
                         </section>
 
                         {{-- FOOTER --}}

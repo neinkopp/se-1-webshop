@@ -41,7 +41,27 @@
                     <main class="flex-1 overflow-y-auto min-w-0">
 
                         <section class="py-10 px-5 lg:px-10 space-y-8">
-                            All Products
+                            {{-- PAGE TITLE --}}
+                            <div>
+                                <h1 class="text-3xl font-bold text-blue-900">
+                                    Produkte verwalten
+                                </h1>
+
+                                <p class="text-gray-500 mt-1">
+                                    Wählen Sie das Produkt zum Ändern aus, löschen Sie Produkte oder legen Sie ein neues Produkt an.
+                                </p>
+                            </div>
+                            <div class="flex flex-1 gap-10 flex-col">
+                                @for ($i = 0; $i < count($products); $i++)
+                                    <x-management-link
+                                        :label="$products[$i]->name"
+                                        :href="'/manage/products/'.$products[$i]->handle"
+                                        :deletion_href="'/manage/products/'.$products[$i]->handle.'/delete'"
+                                        :image_name="$products[$i]->default_pictures[0]['picture_storage_key']"
+                                        :image_background_color="'white'"
+                                    />
+                                @endfor
+                            </div>
                         </section>
 
                         {{-- FOOTER --}}
