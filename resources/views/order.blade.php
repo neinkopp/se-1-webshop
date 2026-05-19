@@ -61,7 +61,7 @@
 								@foreach ($items as $item)
 								<div class="p-5 flex flex-col sm:flex-row gap-5">
 									<div class="w-24 h-24 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center overflow-hidden">
-										<img src="{{ $item->product->image ?? 'https://placehold.co/150x150/e2e8f0/475569?text=Bild' }}" alt="{{ $item->product->name }}" class="w-full h-full object-cover">
+										<img src="{{ Vite::asset('resources/images/'.$item->product->default_pictures[0]['picture_storage_key'])  }}" alt="{{ $item->product->name }}" class="w-full h-full object-cover">
 									</div>
 									<div class="flex-1 flex flex-col justify-between">
 										<div>

@@ -1,4 +1,4 @@
-<a class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition" href="\products\{{ $productHandle }}">
+<a class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition flex flex-1 flex-col justify-between"  href="\products\{{ $productHandle }}">
     <img src="{{ Vite::asset("resources/images/{$productImagePath}") }}"
             alt="Produkt"
             class="w-full">

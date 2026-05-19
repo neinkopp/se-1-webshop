@@ -10,10 +10,11 @@ use Illuminate\Support\Str;
 
 class CheckoutService
 {
-    public function __construct(){}
+	public function __construct() {}
 
-    public static function checkout():Invoice {
-        $session_id = session()->getId();
+	public static function checkout(): Invoice
+	{
+		$session_id = session()->getId();
 		$shoppingCartPositions = ShoppingCartPosition::where('session_id', $session_id)->get();
 
 		if ($shoppingCartPositions->isEmpty()) {
@@ -39,5 +40,5 @@ class CheckoutService
 		ShoppingCartPosition::where('session_id', $session_id)->delete();
 
 		return $invoice;
-    }
+	}
 }

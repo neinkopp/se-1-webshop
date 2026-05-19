@@ -11,8 +11,8 @@ class ProviderFactory
 	public static function make(string $supplierName): PrintProviderStrategy
 	{
 		return match ($supplierName) {
-			"mock_supplier_1" => new DefaultAPINoDataStrategy(),
-			"default_api_data" => new DefaultAPIDataStrategy(),
+			"le_sserafim" => new DefaultAPINoDataStrategy(),
+			"aespa" => new DefaultAPIDataStrategy(),
 			default => throw new InvalidArgumentException("Dienstleister $supplierName nicht gefunden")
 		};
 	}
