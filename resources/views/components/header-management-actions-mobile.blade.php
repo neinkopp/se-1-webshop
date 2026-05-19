@@ -7,7 +7,6 @@
         <button @click="mobileMenuOpen = false" class="text-2xl">×</button>
     </div>
     <div class="p-6 space-y-6">
-        <a href="/orders" class="block text-lg hover:text-blue-600">Orders</a>
-        <a href="/basket" class="block text-lg hover:text-blue-600">Shopping Basket</a>
+        <a href="/logout" class="block text-lg hover:text-blue-600">Abmelden</a>
     </div>
 </div>

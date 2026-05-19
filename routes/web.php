@@ -32,4 +32,16 @@ Route::get('/manage/dashboard', [ManagementController::class, 'show'])->name('ma
 Route::get('/manage/login', [LoginController::class, 'show'])->name('manage.show.login');
 Route::post('/manage/performLogin', [LoginController::class, 'performLogin'])->name('manage.login');
 
+Route::get('/manage/categories', [ManagementController::class, 'showCategories'])->name('manage.show.categories');
+Route::get('/manage/categories/{category}', [ManagementController::class, 'showCategory'])->name('manage.show.category');
+Route::post('/manage/categories/create', [ManagementController::class, 'createCategory'])->name('manage.create.category');
+Route::post('/manage/categories/change', [ManagementController::class, 'changeCategory'])->name('manage.change.category');
+Route::post('/manage/categories/{category}/delete', [ManagementController::class, 'deleteCategory'])->name('manage.delete.category');
+
+Route::get('/manage/products', [ManagementController::class, 'showProducts'])->name('manage.show.products');
+Route::get('/manage/products/{productHandle}', [ManagementController::class, 'showProduct'])->name('manage.show.product');
+Route::post('/manage/products/create', [ManagementController::class, 'createProduct'])->name('manage.create.product');
+Route::post('/manage/products/change', [ManagementController::class, 'changeProduct'])->name('manage.change.product');
+Route::post('/manage/products/{productHandle}/delete', [ManagementController::class, 'deleteProduct'])->name('manage.delete.product');
+
 Route::post("/payment", [PaymentController::class, "initatePayment"])->name("payment");
