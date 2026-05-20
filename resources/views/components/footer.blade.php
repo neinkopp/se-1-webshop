@@ -52,16 +52,12 @@
 
                 <div class="space-y-2 text-blue-100">
 
-                    <a href="#" class="block hover:text-white">
+                    <a href="/contact" class="block hover:text-white">
                         Kontakt
                     </a>
 
-                    <a href="#" class="block hover:text-white">
-                        Versand
-                    </a>
-
-                    <a href="#" class="block hover:text-white">
-                        Rückgabe
+                    <a href="/orders" class="block hover:text-white">
+                        Bestellungen
                     </a>
 
                 </div>
