@@ -38,10 +38,7 @@
                                     @foreach ($products as $product)
 
                                         <x-product-card 
-                                            :productHandle="$product->handle"
-                                            :productDisplayName="$product->name"
-                                            :productDisplayPrice="$product->price"
-                                            :productImagePath="$product->default_pictures[0]['picture_storage_key']"
+                                            :product="$product"
                                         />
 
                                     @endforeach

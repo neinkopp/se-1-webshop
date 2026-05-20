@@ -7,6 +7,7 @@
 
     {{-- AlpineJS --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <style>
         body {

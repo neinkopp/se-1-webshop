@@ -12,7 +12,7 @@ class ChangeProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,12 @@ class ChangeProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string'],
+            'handle' => ['required', 'string'],
+            'price' => ['required', 'numeric'],
+            'category_id' => ['required', 'integer'],
+            'description' => ['required', 'string'],
+            'supplier_name' => ['required', 'string']
         ];
     }
 }

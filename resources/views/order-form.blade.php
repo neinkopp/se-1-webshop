@@ -46,26 +46,13 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="bg-[#f0f4f8] border border-blue-100 rounded-md p-4 flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-blue-900 shrink-0">
-                                    <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
-                                </svg>
-                                <p class="text-blue-900 text-xl font-medium">Zu Ihrer Sicherheit werden Ihre Bestellungen jeweils mit einem <b>Bestellungs-Token</b> versehen, der zur Einsichtnahme Ihrer Bestellung genutzt werden kann.</p>
-                            </div>
-                            <div class="bg-[#f4f0f0] border border-red-100 rounded-md p-4 flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                    class="w-6 h-6 text-red-900 shrink-0">
-
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M9.401 3.003c1.155-2.004 4.043-2.004 5.198 0l7.5 13.004c1.154 2.003-.29 4.493-2.599 4.493H4.5c-2.309 0-3.753-2.49-2.599-4.493l7.5-13.004ZM12 8.25a.75.75 0 0 0-.75.75v4.5a.75.75 0 0 0 1.5 0V9a.75.75 0 0 0-.75-.75Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
-                                </svg>
-                                <p class="text-red-900 text-xl font-medium">
-                                    Sie haben Ihren <b>Bestellungs-Token</b> vergessen? Dann nehmen Sie mit uns 
-                                    <a href="/contact" class="text-red-700 underline underline-offset-4 hover:text-red-500 transition-colors duration-200">Kontakt</a> auf.
-                                </p>
-                            </div>
+                            <x-info>
+                                Zu Ihrer Sicherheit werden Ihre Bestellungen jeweils mit einem <b>Bestellungs-Token</b> versehen, der zur Einsichtnahme Ihrer Bestellung genutzt werden kann.
+                            </x-info>
+                            <x-warning>
+                                Sie haben Ihren <b>Bestellungs-Token</b> vergessen? Dann nehmen Sie mit uns 
+                                <a href="/contact" class="text-red-700 underline underline-offset-4 hover:text-red-500 transition-colors duration-200">Kontakt</a> auf.
+                            </x-warning>
 
                             {{-- BACK BUTTON --}}
                             <div class="pt-2">

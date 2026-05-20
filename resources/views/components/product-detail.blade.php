@@ -13,8 +13,11 @@
 
     foreach($variants as $variant) {
         for($i = 0; $i < count($variant['pictures']); $i++) {
-            $productImages[$variant['value']][$i] = Vite::asset('resources/images/'.$variant['pictures'][$i]['picture_storage_key']);
+            $productImages[$variant['value']][$i] = asset('storage/'.$variant['pictures'][$i]['picture_storage_key']);
         }
+        if (count($variant['pictures']) <= 0) {
+            $productImages[$variant['value']][0] = Vite::asset('resources/images/missing.png');
+        } 
     }
 
 @endphp

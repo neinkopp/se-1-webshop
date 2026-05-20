@@ -45,8 +45,12 @@ Route::post('/manage/categories/{category}/delete', [ManagementController::class
 
 Route::get('/manage/products', [ManagementController::class, 'showProducts'])->name('manage.show.products')->middleware('auth');
 Route::get('/manage/products/{productHandle}', [ManagementController::class, 'showProduct'])->name('manage.show.product')->middleware('auth');
+Route::get('/manage/products/attributes/{productHandle}', [ManagementController::class, 'showProductAttributes'])->name('manage.show.product.attributes')->middleware('auth');
+Route::get('/manage/products/pictures/{productHandle}', [ManagementController::class, 'showProductPictures'])->name('manage.show.product.pictures')->middleware('auth');
 Route::post('/manage/products/create', [ManagementController::class, 'createProduct'])->name('manage.create.product')->middleware('auth');
 Route::post('/manage/products/change', [ManagementController::class, 'changeProduct'])->name('manage.change.product')->middleware('auth');
+Route::post('/manage/products/changeAttributes', [ManagementController::class, 'changeProductAttributes'])->name('manage.change.product.attributes')->middleware('auth');
+Route::post('/manage/products/changePictures', [ManagementController::class, 'changeProductPictures'])->name('manage.change.product.pictures')->middleware('auth');
 Route::post('/manage/products/{productHandle}/delete', [ManagementController::class, 'deleteProduct'])->name('manage.delete.product')->middleware('auth');
 
 Route::post("/payment", [PaymentController::class, "initatePayment"])->name("payment");

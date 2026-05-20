@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Concerns\HasUniqueIds;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class Product extends Model
 {
-    use HasFactory, SoftDeletes, HasUniqueIds;
+    use HasFactory, SoftDeletes, HasUuids;
 
     protected $table = 'product';
     public $timestamps = false;
@@ -20,6 +21,15 @@ class Product extends Model
     protected $casts = [
         'attributes' => 'array',
     ];
+    protected $fillable = [
+		'category_id',
+		'supplier_name',
+        'name',
+		'handle',
+        'description',
+		'price',
+        'attributes'
+	];
 
     protected function getDefaultPicturesAttribute(): array
     {

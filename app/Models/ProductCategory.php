@@ -13,4 +13,9 @@ class ProductCategory extends Model
     protected $casts = [
         'filters' => 'array',
     ];
+
+    protected $fillable = [
+		'name',
+		'filters'
+	];
 }

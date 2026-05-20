@@ -43,7 +43,7 @@ class ProductSeeder extends Seeder
                             "position" => "front"
                         ],
                         [
-                            "asset_storage_key" => "BHH-Logo",
+                            "asset_storage_key" => "BHH-Logo.png",
                             "position" => "back"
                         ]
                     ],
@@ -109,11 +109,11 @@ class ProductSeeder extends Seeder
                     ],
                     'assets' => [
                         [
-                            "asset_storage_key" => "BHH-Kreuz",
+                            "asset_storage_key" => "BHH-Kreuz.png",
                             "position" => "front"
                         ],
                         [
-                            "asset_storage_key" => "BHH-Logo",
+                            "asset_storage_key" => "BHH-Logo.png",
                             "position" => "back"
                         ]
                     ],
@@ -186,7 +186,7 @@ class ProductSeeder extends Seeder
                     "position" => "front"
                     ],
                     [
-                    "asset_storage_key" => "BHH-Logo",
+                    "asset_storage_key" => "BHH-Logo.png",
                     "position" => "back"
                     ]
                 ],
@@ -657,7 +657,7 @@ class ProductSeeder extends Seeder
                 'assets' => [
                   
                     [
-                    "asset_storage_key" => "BHH_Logo_Weiß",
+                    "asset_storage_key" => "BHH_Logo_Weiß.png",
                     "position" => "front"
                     ]
                 ],

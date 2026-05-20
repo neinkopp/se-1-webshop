@@ -57,10 +57,17 @@
                                         :label="$products[$i]->name"
                                         :href="'/manage/products/'.$products[$i]->handle"
                                         :deletion_href="'/manage/products/'.$products[$i]->handle.'/delete'"
-                                        :image_name="$products[$i]->default_pictures[0]['picture_storage_key']"
-                                        :image_background_color="'white'"
+                                        :image_source="count($products[$i]->default_pictures) > 0 ?asset('storage/'.$products[$i]->default_pictures[0]['picture_storage_key']):Vite::asset('resources/images/basket.svg')"
+                                        :image_background_color="count($products[$i]->default_pictures) > 0?'white':'blue-800'"
                                     />
                                 @endfor
+                                <x-management-link
+                                    :label="'Neues Produkt anlegen'"
+                                    :href="'/manage/products/new'"
+                                    :deletion_href="''"
+                                    :image_source="Vite::asset('resources/images/new.svg')"
+                                    :image_background_color="'blue-800'"
+                                />
                             </div>
                         </section>
 

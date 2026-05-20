@@ -8,10 +8,7 @@
             @foreach ($featuredProducts as $product)
                 <div class="min-w-[296px] max-w-[296px]">
                     <x-featured-product-card
-                        :productHandle="$product->handle"
-                        :productDisplayName="$product->name"
-                        :productDisplayPrice="$product->price"
-                        :productImagePath="$product->default_pictures[0]['picture_storage_key']"
+                        :product="$product"
                     />
                 </div>
             @endforeach

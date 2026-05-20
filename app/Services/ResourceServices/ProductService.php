@@ -34,5 +34,12 @@ class ProductService
         return $product;
     }
 
+    public static function removeColorAttribute(Product $product):Product {
+        $attributes = $product->attributes;    
+        unset($attributes['properties']['color']);
+        $product->attributes = $attributes;
+        return $product;
+    }
+
     
 }

@@ -11,7 +11,6 @@ class ProductCategorySeeder extends Seeder
     {
         // T-Shirts (bestehend)
         ProductCategory::create([
-            'category_id' => 1,
             'name' => 'T-Shirts',
             'filters' => [
                 'color' => [
@@ -33,7 +32,6 @@ class ProductCategorySeeder extends Seeder
             ]
         ]);
   ProductCategory::create([
-            'category_id' => 2,
             'name' => 'Hoodies',
             'filters' => [
                 'color' => [
@@ -58,7 +56,6 @@ class ProductCategorySeeder extends Seeder
       
         // Schuhe
         ProductCategory::create([
-            'category_id' => 3,
             'name' => 'Schuhe',
             'filters' => [
                 'color' => [
@@ -80,7 +77,6 @@ class ProductCategorySeeder extends Seeder
 
         // Jacken
         ProductCategory::create([
-            'category_id' => 4,
             'name' => 'Jacken',
             'filters' => [
                 'color' => [
@@ -102,7 +98,6 @@ class ProductCategorySeeder extends Seeder
 
         // Taschen (haben keine Größen im klassischen Sinne)
         ProductCategory::create([
-            'category_id' => 5,
             'name' => 'Taschen',
             'filters' => [
                 'color' => [
@@ -121,7 +116,6 @@ class ProductCategorySeeder extends Seeder
        
       ]); 
       ProductCategory::create([
-            'category_id' => 6,
             'name' => 'Kartenspiel',
             'filters' => [
                 

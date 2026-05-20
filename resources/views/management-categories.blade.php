@@ -57,10 +57,17 @@
                                         :label="$categories[$i]->name"
                                         :href="'/manage/categories/'.$categories[$i]->category_id"
                                         :deletion_href="'/manage/categories/'.$categories[$i]->category_id.'/delete'"
-                                        :image_name="'basket.svg'"
+                                        :image_source="Vite::asset('resources/images/basket.svg')"
                                         :image_background_color="'blue-800'"
                                     />
                                 @endfor
+                                <x-management-link
+                                    :label="'Neue Kategorie anlegen'"
+                                    :href="'/manage/categories/new'"
+                                    :deletion_href="''"
+                                    :image_source="Vite::asset('resources/images/new.svg')"
+                                    :image_background_color="'blue-800'"
+                                />
                             </div>
                         </section>
 

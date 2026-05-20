@@ -12,7 +12,7 @@ class CreateCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,8 @@ class CreateCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|min:1|max:32',
+            'filters' => 'required|array'
         ];
     }
 }
