@@ -2,9 +2,9 @@
     x-data="{
         current: 0,
         images: [
-            '{{ Vite::asset('resources/images/banner_1.png') }}',
-            '{{ Vite::asset('resources/images/banner_2.png') }}',
-            '{{ Vite::asset('resources/images/banner_3.png') }}'
+            '{{ asset('images/banner_1.png') }}',
+            '{{ asset('images/banner_2.png') }}',
+            '{{ asset('images/banner_3.png') }}'
         ],
 
         next() {
@@ -25,8 +25,7 @@
         }, 10000)
     "
 
-    class="relative w-full overflow-hidden"
->
+    class="relative w-full overflow-hidden">
     {{-- IMAGE --}}
     <div class="w-full h-[300px] md:h-[400px] bg-black">
 
@@ -37,8 +36,7 @@
                 x-show="current === index"
                 x-transition:enter="transition ease-in-out duration-5000"
                 x-transition:leave="transition ease-in-out duration-5000"
-                class="w-full h-full object-cover"
-            >
+                class="w-full h-full object-cover">
 
         </template>
 
@@ -47,8 +45,7 @@
     {{-- DOTS --}}
     <div
         class="absolute bottom-4 left-1/2
-               -translate-x-1/2 flex gap-2"
-    >
+               -translate-x-1/2 flex gap-2">
 
         <template x-for="(image, index) in images" :key="index">
 
@@ -59,8 +56,7 @@
                     current === index
                     ? 'bg-white'
                     : 'bg-white/40'
-                "
-            ></button>
+                "></button>
 
         </template>
 
