@@ -3,18 +3,12 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Middleware\TrustProxies as Middleware;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Http\Request;
 
 class TrustProxies extends Middleware
 {
-	/**
-	 * Trust all proxies (Docker + Traefik setup)
-	 */
 	protected $proxies = '*';
 
-	/**
-	 * Trust all forwarded headers
-	 */
 	protected $headers =
 	Request::HEADER_X_FORWARDED_FOR |
 		Request::HEADER_X_FORWARDED_HOST |
