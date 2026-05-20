@@ -26,5 +26,3 @@ DB_PASSWORD=password
 
 - Run composer run dev
 ```
-
-e
