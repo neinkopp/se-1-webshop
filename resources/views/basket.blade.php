@@ -82,7 +82,7 @@
                                         </div>
                                     </div>
                                     <div class="flex flex-col items-end justify-between sm:w-24 mt-4 sm:mt-0">
-                                        <span class="text-xl font-bold text-blue-900">{{ number_format($item->product->price * $item->amount, 2) }} $</span>
+                                        <span class="text-xl font-bold text-blue-900">{{ number_format($item->product->price * $item->amount, 2) }}€</span>
                                         <form action="{{ route('basket.remove') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="position_id" value="{{ $item->id }}">

@@ -150,7 +150,7 @@
 										</div>
 									</div>
 									<div class="flex flex-col items-end justify-between sm:w-24 mt-4 sm:mt-0">
-										<span class="text-xl font-bold text-blue-900">{{ number_format($item->price_per_unit * $item->amount, 2) }} $</span>
+										<span class="text-xl font-bold text-blue-900">{{ number_format($item->price_per_unit * $item->amount, 2) }}€</span>
 									</div>
 								</div>
 								@endforeach
