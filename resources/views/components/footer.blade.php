@@ -52,7 +52,7 @@
 
                 <div class="space-y-2 text-blue-100">
 
-                    <a href="/contact" class="block hover:text-white">
+                    <a href="https://bhh.de/kontakt" class="block hover:text-white">
                         Kontakt
                     </a>
 
@@ -73,16 +73,12 @@
 
                 <div class="space-y-2 text-blue-100">
 
-                    <a href="#" class="block hover:text-white">
+                    <a href="https://bhh.de/impressum" class="block hover:text-white">
                         Impressum
                     </a>
 
-                    <a href="#" class="block hover:text-white">
+                    <a href="https://bhh.de/datenschutz" class="block hover:text-white">
                         Datenschutz
-                    </a>
-
-                    <a href="#" class="block hover:text-white">
-                        AGB
                     </a>
 
                 </div>
