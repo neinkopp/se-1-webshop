@@ -15,7 +15,7 @@ app.post("/api/init-checkout", (req, res) => {
   );
 
   let filtered = sessions.filter((s) => s.token !== order_token);
-  sessions = [filtered, { token: order_token, products }];
+  sessions = [filtered, { token: order_token, products, customer }];
 
   res.json({
     success: true,
@@ -30,7 +30,11 @@ app.get("/pay/:token", (req, res) => {
   console.log(JSON.stringify(sessions));
   let template = Handlebars.compile(source);
   let session = sessions.find((s) => s.token === req.params.token);
-  let data = { token: session.token, products: session.products };
+  let data = {
+    token: session.token,
+    products: session.products,
+    customer: session.customer,
+  };
   res.send(template(data));
 });
 

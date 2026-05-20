@@ -10,14 +10,6 @@ class DefaultAPINoDataStrategy implements PrintProviderStrategy
 {
 	public function processOrder(PaymentOrderData $orderData): string
 	{
-		$redirect_url = Http::post("http://localhost:3001/api/init-checkout", [
-			"order_token" => $orderData->orderToken,
-			"products" => $orderData->positions,
-			"customer" => [
-				"name" => "Jakobus"
-			]
-		])["payment_url"];
-
-		return $redirect_url;
+		return config("services.webshops.webshop_2_url") . "/api/init-checkout";
 	}
 }

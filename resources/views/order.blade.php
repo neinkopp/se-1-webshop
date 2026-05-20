@@ -6,10 +6,75 @@
 
 	<div
 		x-data="{
-        mobileMenuOpen: false,
-        sidebarOpen: false
-    }"
+            mobileMenuOpen: false,
+            sidebarOpen: false,
+            showAddressModal: true,
+            showDeliveryAddress: false,
+            billingAddress: {
+                name: '',
+                street: '',
+                zip: '',
+                city: '',
+                country: '',
+                email: '',
+                phone: ''
+            },
+            deliveryAddress: {
+                name: '',
+                street: '',
+                zip: '',
+                city: '',
+                country: '',
+                email: '',
+                phone: ''
+            },
+            submitAddress() {
+                this.showAddressModal = false;
+            }
+        }"
 		class="flex flex-col flex-1">
+
+		{{-- MODAL FOR BILLING ADDRESS --}}
+		<div x-show="showAddressModal" x-cloak class="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 flex items-center justify-center" @keydown.escape.window="showAddressModal = false">
+			<div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-md" @click.away="showAddressModal = false">
+				<h2 class="text-2xl font-bold text-blue-900 mb-6">Rechnungsadresse eingeben</h2>
+				<form @submit.prevent="submitAddress">
+					<div class="space-y-4">
+						<input type="text" x-model="billingAddress.name" placeholder="Name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+						<input type="text" x-model="billingAddress.street" placeholder="Straße und Hausnummer" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+						<div class="flex gap-4">
+							<input type="text" x-model="billingAddress.zip" placeholder="PLZ" required class="w-1/3 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+							<input type="text" x-model="billingAddress.city" placeholder="Stadt" required class="w-2/3 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+						</div>
+						<input type="text" x-model="billingAddress.country" placeholder="Land" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+						<input type="email" x-model="billingAddress.email" placeholder="E-Mail-Adresse" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+						<input type="tel" x-model="billingAddress.phone" placeholder="Telefonnummer" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+					</div>
+
+					<div class="mt-4">
+						<label class="inline-flex items-center">
+							<input type="checkbox" x-model="showDeliveryAddress" class="form-checkbox h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+							<span class="ml-2 text-gray-700">Abweichende Lieferadresse angeben</span>
+						</label>
+					</div>
+
+					<div x-show="showDeliveryAddress" class="mt-6 space-y-4">
+						<h3 class="text-xl font-bold text-blue-900">Lieferadresse</h3>
+						<input type="text" x-model="deliveryAddress.name" placeholder="Name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+						<input type="text" x-model="deliveryAddress.street" placeholder="Straße und Hausnummer" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+						<div class="flex gap-4">
+							<input type="text" x-model="deliveryAddress.zip" placeholder="PLZ" class="w-1/3 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+							<input type="text" x-model="deliveryAddress.city" placeholder="Stadt" class="w-2/3 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+						</div>
+						<input type="text" x-model="deliveryAddress.country" placeholder="Land" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+					</div>
+
+					<div class="mt-6 flex justify-end">
+						<button type="submit" class="px-6 py-2 bg-blue-900 text-white rounded-md hover:bg-blue-800 transition font-medium">Speichern</button>
+					</div>
+				</form>
+			</div>
+		</div>
 
 		{{-- HEADER --}}
 		<x-header>
@@ -94,6 +159,22 @@
 								<form action="{{ route('payment') }}" method="post" target="_blank">
 									<input type="hidden" name="invoice_id" value="{{ $invoice->invoice_id }}">
 									<input type="hidden" name="supplier_name" value="{{ $items[0]->product->supplier_name }}">
+									<input type="hidden" name="customer_name" :value="billingAddress.name">
+									<input type="hidden" name="customer_street" :value="billingAddress.street">
+									<input type="hidden" name="customer_zip" :value="billingAddress.zip">
+									<input type="hidden" name="customer_city" :value="billingAddress.city">
+									<input type="hidden" name="customer_country" :value="billingAddress.country">
+									<input type="hidden" name="customer_email" :value="billingAddress.email">
+									<input type="hidden" name="customer_phone" :value="billingAddress.phone">
+									<template x-if="showDeliveryAddress">
+										<div>
+											<input type="hidden" name="delivery_name" :value="deliveryAddress.name">
+											<input type="hidden" name="delivery_street" :value="deliveryAddress.street">
+											<input type="hidden" name="delivery_zip" :value="deliveryAddress.zip">
+											<input type="hidden" name="delivery_city" :value="deliveryAddress.city">
+											<input type="hidden" name="delivery_country" :value="deliveryAddress.country">
+										</div>
+									</template>
 									<button type="submit" class="inline-flex items-center gap-2 border border-blue-900 text-blue-900 px-5 py-2 rounded hover:bg-gray-50 transition font-medium text-sm">
 										Zum Anbieter
 										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
@@ -132,21 +213,40 @@
 							</h2>
 
 							<div class="space-y-5 text-sm text-gray-800">
-								<div>
-									<p>Max Mustermann</p>
-									<p>Öjendorfer Weg 47</p>
-									<p>22119 Hamburg</p>
-									<p>Deutschland</p>
+								<div x-show="billingAddress.name">
+									<p x-text="billingAddress.name"></p>
+									<p x-text="billingAddress.street"></p>
+									<p><span x-text="billingAddress.zip"></span> <span x-text="billingAddress.city"></span></p>
+									<p x-text="billingAddress.country"></p>
 								</div>
 
-								<div>
+								<div x-show="billingAddress.email">
 									<p class="text-gray-500 mb-1">E-Mail-Adresse</p>
-									<p>max.mustermann@beispiel.de</p>
+									<p x-text="billingAddress.email"></p>
 								</div>
 
-								<div>
+								<div x-show="billingAddress.phone">
 									<p class="text-gray-500 mb-1">Telefonnummer</p>
-									<p>+49 40 12345678</p>
+									<p x-text="billingAddress.phone"></p>
+								</div>
+							</div>
+						</div>
+
+						{{-- LIEFERADRESSE --}}
+						<div x-show="showDeliveryAddress && deliveryAddress.name" class="bg-white border border-gray-200 rounded-md shadow-sm p-6">
+							<h2 class="text-lg font-bold text-blue-900 mb-6 flex items-center gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v.958m12 0a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25m12 0c-1.356 0-2.71 0-4.064 0M4.5 12a2.25 2.25 0 0 1-2.25-2.25V6.375c0-.621.504-1.125 1.125-1.125h13.5c.621 0 1.125.504 1.125 1.125v3.375c0 1.24-1.01 2.25-2.25 2.25" />
+								</svg>
+								Lieferadresse
+							</h2>
+
+							<div class="space-y-5 text-sm text-gray-800">
+								<div>
+									<p x-text="deliveryAddress.name"></p>
+									<p x-text="deliveryAddress.street"></p>
+									<p><span x-text="deliveryAddress.zip"></span> <span x-text="deliveryAddress.city"></span></p>
+									<p x-text="deliveryAddress.country"></p>
 								</div>
 							</div>
 						</div>
@@ -157,7 +257,7 @@
 								<path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
 							</svg>
 							<p class="text-blue-900 text-sm leading-relaxed">
-								Die Daten werden nicht gespeichert und ausschließlich dem jeweiligen Anbieter zur Abwicklung Ihrer Bestellung übermittelt.
+								Ihre personenbezogenen Daten werden nicht auf dieser Website gespeichert sondern lediglich bei Bedarf an die Printshopbetreiber übermittelt.
 							</p>
 						</div>
 

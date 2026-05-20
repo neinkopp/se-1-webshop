@@ -41,4 +41,9 @@ return [
         'redirect' => '/auth/callback',
     ],
 
+    "webshops" => [
+        'webshop_1_url' => env('WEBSHOP_1_URL'),
+        'webshop_2_url' => env('WEBSHOP_2_URL'),
+    ]
+
 ];

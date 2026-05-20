@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Webshop-1-Demo: Bezahlen</title>
+	<title>Aespa Printshop: Bezahlen</title>
 	<style>
 		body {
 			font-family: Arial, sans-serif;
@@ -87,6 +87,35 @@
 			background: #218838;
 		}
 
+		.summary-container {
+			border: 1px solid #ccc;
+			padding: 20px;
+			border-radius: 8px;
+			background: #f9f9f9;
+			margin-bottom: 20px;
+		}
+
+		.summary-section {
+			margin-bottom: 20px;
+		}
+
+		.summary-section h3 {
+			border-bottom: 1px solid #ddd;
+			padding-bottom: 5px;
+			margin-bottom: 10px;
+		}
+
+		.product-item {
+			display: flex;
+			justify-content: space-between;
+			padding: 5px 0;
+		}
+
+		.address-details p {
+			margin: 0;
+			line-height: 1.5;
+		}
+
 		@keyframes fadeIn {
 			from {
 				opacity: 0;
@@ -101,12 +130,50 @@
 
 <body>
 
-	<h1>Webshop-1-Demo: Bezahlen</h1>
-	<p>Hallo, wir haben deine Adresse vom AStA erhalten. Bitte gib jetzt nur
+	<h1>Aespa Printshop: Bezahlen</h1>
+	<p>Moin, wir haben deine Adresse vom AStA erhalten. Bitte gib jetzt nur
 		noch deine Zahlungsdaten für Bestellung
 		<strong>{{token}}</strong>
 		ein.
 	</p>
+
+	<div class="summary-container">
+		<h2>Bestellübersicht</h2>
+
+		<div class="summary-section">
+			<h3>Produkte</h3>
+			{{#each products}}
+			<div class="product-item">
+				<span>{{this.amount}}x {{this.name}}</span>
+				<span>{{this.unitPrice}} €</span>
+			</div>
+			{{/each}}
+		</div>
+
+		<div class="summary-section">
+			<h3>Rechnungsadresse</h3>
+			<div class="address-details">
+				<p>{{customer.name}}</p>
+				<p>{{customer.street}}</p>
+				<p>{{customer.zip}} {{customer.city}}</p>
+				<p>{{customer.country}}</p>
+				<p>E-Mail: {{customer.email}}</p>
+				<p>Telefon: {{customer.phone}}</p>
+			</div>
+		</div>
+
+		{{#if customer.delivery_name}}
+		<div class="summary-section">
+			<h3>Lieferadresse</h3>
+			<div class="address-details">
+				<p>{{customer.delivery_name}}</p>
+				<p>{{customer.delivery_street}}</p>
+				<p>{{customer.delivery_zip}} {{customer.delivery_city}}</p>
+				<p>{{customer.delivery_country}}</p>
+			</div>
+		</div>
+		{{/if}}
+	</div>
 
 	<div class="form-container">
 		<div class="tabs">

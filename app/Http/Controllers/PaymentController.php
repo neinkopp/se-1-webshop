@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\PaymentOrderCustomerData;
 use App\DTO\PaymentOrderData;
 use App\DTO\PaymentPositionData;
 use App\Models\Invoice;
@@ -16,6 +17,19 @@ class PaymentController extends Controller
 		$validated = $request->validate([
 			'invoice_id' => ['required'],
 			'supplier_name' => ['required'],
+
+			'customer_name' => ['required'],
+			'customer_street' => ['required'],
+			'customer_zip' => ['required'],
+			'customer_city' => ['required'],
+			'customer_country' => ['required'],
+			'customer_email' => ['required'],
+			'customer_phone' => ['required'],
+			'delivery_name' => ['nullable'],
+			'delivery_street' => ['nullable'],
+			'delivery_zip' => ['nullable'],
+			'delivery_city' => ['nullable'],
+			'delivery_country' => ['nullable'],
 		]);
 
 		$invoice_id = $validated["invoice_id"];
@@ -33,7 +47,22 @@ class PaymentController extends Controller
 			)
 			->all();
 
-		$payment_order_data = new PaymentOrderData($invoice->token, $payment_positions);
+		$payment_customer_data = new PaymentOrderCustomerData(
+			$validated['customer_name'],
+			$validated['customer_street'],
+			$validated['customer_zip'],
+			$validated['customer_city'],
+			$validated['customer_country'],
+			$validated['customer_email'],
+			$validated['customer_phone'],
+			$validated['delivery_name'] ?? null,
+			$validated['delivery_street'] ?? null,
+			$validated['delivery_zip'] ?? null,
+			$validated['delivery_city'] ?? null,
+			$validated['delivery_country'] ?? null,
+		);
+
+		$payment_order_data = new PaymentOrderData($invoice->token, $payment_customer_data, $payment_positions);
 
 		$strategy = ProviderFactory::make($supplier_name);
 		$redirect_url = $strategy->processOrder($payment_order_data);
