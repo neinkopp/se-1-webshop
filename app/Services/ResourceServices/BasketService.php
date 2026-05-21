@@ -86,10 +86,10 @@ class BasketService
         return $cartItems->groupBy('product.supplier.display_name');
     }
 
-    private static function getTotalPrice(Collection $cartItems): int
+    private static function getTotalPrice(Collection $cartItems): float
     {
         return $cartItems->sum(function ($item) {
-            return $item->product->price * $item->amount;
+            return $item->product->price * (float)$item->amount;
         });
     }
 
