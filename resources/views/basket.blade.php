@@ -122,14 +122,14 @@
                                         <p class="font-medium text-blue-900">Zwischensumme:</p>
                                         <p class="text-sm text-gray-500">({{ $totalItems }} Artikel)</p>
                                     </div>
-                                    <span class="font-bold text-lg text-blue-900">{{ number_format($totalPrice, 2) }} $</span>
+                                    <span class="font-bold text-lg text-blue-900">{{ number_format($totalPrice, 2) }} €</span>
                                 </div>
 
                                 <hr class="border-gray-200 py-1">
 
                                 <div class="flex justify-between items-center">
                                     <span class="font-bold text-lg text-blue-900">Gesamtsumme</span>
-                                    <span class="font-bold text-xl text-blue-900">{{ number_format($totalPrice, 2) }} $</span>
+                                    <span class="font-bold text-xl text-blue-900">{{ number_format($totalPrice, 2) }} €</span>
                                 </div>
 
                                 <div class="mt-6">
