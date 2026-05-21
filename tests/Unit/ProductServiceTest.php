@@ -30,6 +30,7 @@ class ProductServiceTest extends TestCase
             'display_name' => 'Printful Inc.'
         ]);
         
+        
 
         $product = Product::create([
             'category_id' => $category->category_id,
