@@ -3,6 +3,7 @@
 namespace App\Services\ResourceServices;
 
 use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Models\ShoppingCartPosition;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -52,8 +53,32 @@ class BasketService
     {
 
         $cartItems = ShoppingCartPosition::with('product.supplier')->where('session_id', session()->getId())->get();
+        foreach($cartItems as $cartItem) {
+            $selectedOptions['properties'] = $cartItem->selected_options['properties'];
+            $product = $cartItem->product;
+            $attributes = $product->attributes;
+            $image = $cartItem->product->attributes['default_pictures'][0]?$cartItem->product->attributes['default_pictures'][0]['picture_storage_key']:null;
+            if(isset($selectedOptions['properties']['color']) && isset($cartItem->product->attributes['properties']['color'])) {
+                $selectedOptions['properties']['color'] = BasketService::appendColorValues($selectedOptions['properties']['color'], $cartItem->product->attributes['properties']['color']);
+                $image = $selectedOptions['properties']['color']['image'];
+            }
+            $selectedOptions['properties'] = BasketService::appendPropertyDisplayNames($selectedOptions['properties'], $cartItem->product->category_id);
+            $cartItem->selected_options = $selectedOptions;
+            $attributes['default_pictures'][0]['picture_storage_key'] = $image;
+            $product->attributes = $attributes;
+            $cartItem->product = $product;
+        }
 
         return ['items' => BasketService::groupBySupplier($cartItems), 'totalPrice' => BasketService::getTotalPrice($cartItems), 'totalItems' => BasketService::getTotalItems($cartItems)];
+    }
+
+    public static function appendColorValues(string $colorName, array $colors):array {
+        foreach($colors as $colorId => $color) {
+            if ($color['displayName'] == $colorName) {
+                return ['name' => $colorName, 'value' => $color['value'], 'image' => $color['pictures'][0]?$color['pictures'][0]['picture_storage_key']:''];
+            }
+        }
+        return ['name' => $colorName];
     }
 
     private static function groupBySupplier(Collection $cartItems): Collection
@@ -71,5 +96,17 @@ class BasketService
     private static function getTotalItems(Collection $cartItems): int
     {
         return $cartItems->sum('amount');
+    }
+
+    public static function appendPropertyDisplayNames(array $properties, int $categoryId):array {
+        $category = ProductCategory::where('category_id', '=', $categoryId)->firstOrFail();
+
+        foreach ($properties as $propertyName => $property) {
+            $propertyDisplayName = $category->filters[$propertyName]['displayName'] ?? $propertyName;
+            $properties[$propertyDisplayName] = $property;
+            unset($properties[$propertyName]);
+        }
+
+        return $properties;
     }
 }

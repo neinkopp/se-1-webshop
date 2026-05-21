@@ -16,5 +16,5 @@
             </div>
         @endif
     </div>
-    <input id="{{ $id }}" type="file" name="{{ $name }}" class="rounded-xl border border-gray-300 px-4 py-3 w-full">
+    <input id="{{ $id }}" type="file" accept=".png,.jpeg,.jpg,.gif,.webp" name="{{ $name }}" class="rounded-xl border border-gray-300 px-4 py-3 w-full">
 </div>

@@ -8,7 +8,7 @@
             <div>
 
                 <img
-                    src="{{ Vite::asset('resources/images/bhh.svg') }}"
+                    src="{{ asset('images/bhh.svg') }}"
                     alt="Logo"
                     class="h-12 mb-4">
 
@@ -52,16 +52,12 @@
 
                 <div class="space-y-2 text-blue-100">
 
-                    <a href="#" class="block hover:text-white">
+                    <a href="https://bhh.de/kontakt" class="block hover:text-white">
                         Kontakt
                     </a>
 
-                    <a href="#" class="block hover:text-white">
-                        Versand
-                    </a>
-
-                    <a href="#" class="block hover:text-white">
-                        Rückgabe
+                    <a href="/orders" class="block hover:text-white">
+                        Bestellungen
                     </a>
 
                 </div>
@@ -77,16 +73,12 @@
 
                 <div class="space-y-2 text-blue-100">
 
-                    <a href="#" class="block hover:text-white">
+                    <a href="https://bhh.de/impressum" class="block hover:text-white">
                         Impressum
                     </a>
 
-                    <a href="#" class="block hover:text-white">
+                    <a href="https://bhh.de/datenschutz" class="block hover:text-white">
                         Datenschutz
-                    </a>
-
-                    <a href="#" class="block hover:text-white">
-                        AGB
                     </a>
 
                 </div>

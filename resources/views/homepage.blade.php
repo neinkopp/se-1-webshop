@@ -59,6 +59,9 @@
                     {{-- PRODUCTS --}}
                     <section class="py-10 px-5 lg:px-10">
 
+                        {{-- FEATURED --}}
+                        <x-featured-products :featuredProducts="$featuredProducts" />
+
                         <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-8">
 
                             @foreach ($products as $product)
@@ -70,10 +73,6 @@
                             @endforeach
 
                         </div>
-
-                        {{-- FEATURED --}}
-                        <x-featured-products
-                            :featuredProducts="$featuredProducts" />
 
                     </section>
 

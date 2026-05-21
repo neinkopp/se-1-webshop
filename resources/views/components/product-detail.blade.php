@@ -16,7 +16,7 @@
             $productImages[$variant['value']][$i] = asset('storage/'.$variant['pictures'][$i]['picture_storage_key']);
         }
         if (count($variant['pictures']) <= 0) {
-            $productImages[$variant['value']][0] = Vite::asset('resources/images/missing.png');
+            $productImages[$variant['value']][0] = asset('images/missing.png');
         } 
     }
 

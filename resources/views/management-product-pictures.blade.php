@@ -92,153 +92,154 @@
                                         </div>
 
                                     </div>
-
                                     {{-- COLORS --}}
-                                    <div class="mb-16">
+                                    @if(isset($product->attributes['properties']['color']))
+                                        <div class="mb-16">
 
-                                        <div class="flex items-center justify-between mb-5">
+                                            <div class="flex items-center justify-between mb-5">
 
-                                            <div>
+                                                <div>
 
-                                                <h2 class="text-xl font-semibold">
-                                                    Farben
-                                                </h2>
+                                                    <h2 class="text-xl font-semibold">
+                                                        Farben
+                                                    </h2>
 
-                                                <p class="text-gray-500 text-sm">
-                                                    Jede Farbe besitzt bis zu 4 Bilder
-                                                </p>
+                                                    <p class="text-gray-500 text-sm">
+                                                        Jede Farbe besitzt bis zu 4 Bilder
+                                                    </p>
+
+                                                </div>
+
+                                                <button
+                                                    type="button"
+                                                    @click="addColor()"
+                                                    class="bg-blue-900 hover:bg-blue-950 text-white px-5 py-3 rounded-xl"
+                                                >
+                                                    Farbe hinzufügen
+                                                </button>
 
                                             </div>
 
-                                            <button
-                                                type="button"
-                                                @click="addColor()"
-                                                class="bg-blue-900 hover:bg-blue-950 text-white px-5 py-3 rounded-xl"
-                                            >
-                                                Farbe hinzufügen
-                                            </button>
+                                            <div class="space-y-8">
 
-                                        </div>
+                                                <template
+                                                    x-for="(color, colorIndex) in colors"
+                                                    :key="color.id"
+                                                >
 
-                                        <div class="space-y-8">
+                                                    <div class="border border-gray-200 rounded-2xl p-6">
 
-                                            <template
-                                                x-for="(color, colorIndex) in colors"
-                                                :key="color.id"
-                                            >
+                                                        {{-- HEADER --}}
+                                                        <div class="flex items-start justify-between gap-5 mb-6">
 
-                                                <div class="border border-gray-200 rounded-2xl p-6">
+                                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 flex-1">
 
-                                                    {{-- HEADER --}}
-                                                    <div class="flex items-start justify-between gap-5 mb-6">
+                                                                <div>
 
-                                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 flex-1">
-
-                                                            <div>
-
-                                                                <label class="block text-sm font-medium mb-2">
-                                                                    Anzeigename
-                                                                </label>
-
-                                                                <input
-                                                                    type="text"
-                                                                    x-model="color.displayName"
-                                                                    class="w-full rounded-xl border border-gray-300 px-4 py-3"
-                                                                    placeholder="weiß"
-                                                                >
-
-                                                            </div>
-
-                                                            <div>
-
-                                                                <label class="block text-sm font-medium mb-2">
-                                                                    Farbwert
-                                                                </label>
-
-                                                                <input type="color" x-model="color.value"
-                                                                    class="w-12 h-12 rounded-xl border border-gray-300 px-2 py-2"
-                                                                >
-
-                                                            </div>
-
-                                                        </div>
-
-                                                        <button
-                                                            type="button"
-                                                            @click="removeColor(colorIndex)"
-                                                            class="bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl"
-                                                        >
-                                                            Entfernen
-                                                        </button>
-
-                                                    </div>
-
-                                                    {{-- PICTURES --}}
-                                                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
-
-                                                        <template
-                                                            x-for="slot in 4"
-                                                            :key="slot"
-                                                        >
-
-                                                            <div>
-
-                                                                <label class="block text-sm font-medium mb-2">
-                                                                    Bild <span x-text="slot"></span>
-                                                                </label>
-
-                                                                <div
-                                                                    class="space-y-3"
-                                                                >
-
-                                                                    <div
-                                                                        class="aspect-square rounded-2xl overflow-hidden border bg-gray-100"
-                                                                    >
-
-                                                                        <template
-                                                                            x-if="color.currentPictures[slot - 1]"
-                                                                        >
-
-                                                                            <img
-                                                                                :src="'/storage/' + color.currentPictures[slot - 1]"
-                                                                                class="w-full h-full object-cover"
-                                                                            >
-
-                                                                        </template>
-
-                                                                        <template
-                                                                            x-if="!color.currentPictures[slot - 1]"
-                                                                        >
-
-                                                                            <div class="w-full h-full flex items-center justify-center text-gray-400 text-sm">
-                                                                                Kein Bild
-                                                                            </div>
-
-                                                                        </template>
-
-                                                                    </div>
+                                                                    <label class="block text-sm font-medium mb-2">
+                                                                        Anzeigename
+                                                                    </label>
 
                                                                     <input
-                                                                        type="file"
-                                                                        :id="'colorPicture_' + colorIndex + '_' + slot"
+                                                                        type="text"
+                                                                        x-model="color.displayName"
                                                                         class="w-full rounded-xl border border-gray-300 px-4 py-3"
+                                                                        placeholder="weiß"
+                                                                    >
+
+                                                                </div>
+
+                                                                <div>
+
+                                                                    <label class="block text-sm font-medium mb-2">
+                                                                        Farbwert
+                                                                    </label>
+
+                                                                    <input type="color" x-model="color.value"
+                                                                        class="w-12 h-12 rounded-xl border border-gray-300 px-2 py-2"
                                                                     >
 
                                                                 </div>
 
                                                             </div>
 
-                                                        </template>
+                                                            <button
+                                                                type="button"
+                                                                @click="removeColor(colorIndex)"
+                                                                class="bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-xl"
+                                                            >
+                                                                Entfernen
+                                                            </button>
+
+                                                        </div>
+
+                                                        {{-- PICTURES --}}
+                                                        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+
+                                                            <template
+                                                                x-for="slot in 4"
+                                                                :key="slot"
+                                                            >
+
+                                                                <div>
+
+                                                                    <label class="block text-sm font-medium mb-2">
+                                                                        Bild <span x-text="slot"></span>
+                                                                    </label>
+
+                                                                    <div
+                                                                        class="space-y-3"
+                                                                    >
+
+                                                                        <div
+                                                                            class="aspect-square rounded-2xl overflow-hidden border bg-gray-100"
+                                                                        >
+
+                                                                            <template
+                                                                                x-if="color.currentPictures[slot - 1]"
+                                                                            >
+
+                                                                                <img
+                                                                                    :src="'/storage/' + color.currentPictures[slot - 1]"
+                                                                                    class="w-full h-full object-cover"
+                                                                                >
+
+                                                                            </template>
+
+                                                                            <template
+                                                                                x-if="!color.currentPictures[slot - 1]"
+                                                                            >
+
+                                                                                <div class="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                                                                                    Kein Bild
+                                                                                </div>
+
+                                                                            </template>
+
+                                                                        </div>
+
+                                                                        <input
+                                                                            type="file"
+                                                                            :id="'colorPicture_' + colorIndex + '_' + slot"
+                                                                            class="w-full rounded-xl border border-gray-300 px-4 py-3"
+                                                                        >
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </template>
+
+                                                        </div>
 
                                                     </div>
 
-                                                </div>
+                                                </template>
 
-                                            </template>
+                                            </div>
 
                                         </div>
-
-                                    </div>
+                                    @endif
 
                                     {{-- ASSETS --}}
                                     <div class="mb-12">

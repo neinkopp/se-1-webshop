@@ -58,7 +58,7 @@
                                 @foreach ($items as $item)
                                 <div class="p-5 flex flex-col sm:flex-row gap-5">
                                     <div class="w-24 h-24 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center overflow-hidden">
-                                        <img src="{{ Vite::asset('resources/images/'.$item->product->default_pictures[0]['picture_storage_key']) }}" alt="{{ $item->product->name }}" class="w-full h-full object-cover">
+                                        <img src="{{ asset('storage/'.$item->product->default_pictures[0]['picture_storage_key']) }}" alt="{{ $item->product->name }}" class="w-full h-full object-cover">
                                     </div>
                                     <div class="flex-1 flex flex-col justify-between">
                                         <div>
@@ -68,9 +68,11 @@
                                             <div class="mt-2 text-sm text-gray-700 flex items-center gap-2">
                                                 <span>{{ ucfirst($key) }}:</span>
                                                 @if ($key == 'color' || $key == 'Farbe')
-                                                <span class="w-4 h-4 rounded-full shadow-inner block" style="background-color: {{ $value }}"></span>
-                                                @endif
+                                                <span class="w-4 h-4 rounded-full shadow-inner block bg-[{{ $value['value'] }}]"></span>
+                                                <span>{{ $value['name'] }}</span>
+                                                @else
                                                 <span>{{ $value }}</span>
+                                                @endif
                                             </div>
                                             @endforeach
                                             @endif
@@ -80,12 +82,12 @@
                                         </div>
                                     </div>
                                     <div class="flex flex-col items-end justify-between sm:w-24 mt-4 sm:mt-0">
-                                        <span class="text-xl font-bold text-blue-900">{{ number_format($item->product->price * $item->amount, 2) }} $</span>
+                                        <span class="text-xl font-bold text-blue-900">{{ number_format($item->product->price * $item->amount, 2) }}€</span>
                                         <form action="{{ route('basket.remove') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="position_id" value="{{ $item->id }}">
                                             <button type="submit" class="text-blue-900 hover:text-red-600 transition" aria-label="Artikel entfernen">
-                                                <img src="{{ Vite::asset("resources/images/trashcan.svg") }}" alt="Entfernen" class="w-10">
+                                                <img src="{{ asset("images/trashcan.svg") }}" alt="Entfernen" class="w-10">
                                             </button>
                                         </form>
                                     </div>
@@ -120,14 +122,14 @@
                                         <p class="font-medium text-blue-900">Zwischensumme:</p>
                                         <p class="text-sm text-gray-500">({{ $totalItems }} Artikel)</p>
                                     </div>
-                                    <span class="font-bold text-lg text-blue-900">{{ number_format($totalPrice, 2) }} $</span>
+                                    <span class="font-bold text-lg text-blue-900">{{ number_format($totalPrice, 2) }} €</span>
                                 </div>
 
                                 <hr class="border-gray-200 py-1">
 
                                 <div class="flex justify-between items-center">
                                     <span class="font-bold text-lg text-blue-900">Gesamtsumme</span>
-                                    <span class="font-bold text-xl text-blue-900">{{ number_format($totalPrice, 2) }} $</span>
+                                    <span class="font-bold text-xl text-blue-900">{{ number_format($totalPrice, 2) }} €</span>
                                 </div>
 
                                 <div class="mt-6">

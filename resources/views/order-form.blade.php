@@ -51,7 +51,7 @@
                             </x-info>
                             <x-warning>
                                 Sie haben Ihren <b>Bestellungs-Token</b> vergessen? Dann nehmen Sie mit uns 
-                                <a href="/contact" class="text-red-700 underline underline-offset-4 hover:text-red-500 transition-colors duration-200">Kontakt</a> auf.
+                                <a href="https://bhh.de/kontakt" class="text-red-700 underline underline-offset-4 hover:text-red-500 transition-colors duration-200">Kontakt</a> auf.
                             </x-warning>
 
                             {{-- BACK BUTTON --}}

@@ -117,6 +117,8 @@ class ManagementProductService
     }
 
     public static function updatePictures(Product $product, ChangeProductPicturesRequest $request): Product {
+
+        $productCategory = ProductCategory::where('category_id', $product->category_id)->firstOrFail();
         $attributes = $product->attributes ?? [];
 
         $attributes['default_pictures'] = ProductImageService::storeDefaultPictures($request, $attributes['default_pictures'] ?? []);
@@ -126,15 +128,14 @@ class ManagementProductService
         | COLORS
         |--------------------------------------------------------------------------
         */
-
-        $attributes['properties']['color'] =
-            ProductImageService::storeColorPictures(
-
-                $request,
-
-                $attributes['properties']['color']
-                ?? []
-            );
+        if (isset($productCategory->filters['color'])) {
+            $attributes['properties']['color'] =
+                ProductImageService::storeColorPictures(
+                    $request,
+                    $attributes['properties']['color']
+                    ?? []
+                );
+        }
 
         /*
         |--------------------------------------------------------------------------

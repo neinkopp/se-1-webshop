@@ -10,14 +10,14 @@
             <div class="flex justify-between items-center">
                 <p class="text-gray-500 text-xl">{{ $label }}</p>
                 @if ($deletion_href !== '')
-                    <!-- 
+                <!-- 
                       Using Alpine.js here to handle the state:
                       @click.stop prevents clicking the form from triggering the parent redirect 
                     -->
-                    <form 
-                        action="{{ $deletion_href }}" 
-                        method="POST"
-                        x-data="{
+                <form
+                    action="{{ $deletion_href }}"
+                    method="POST"
+                    x-data="{
                             async deleteItem(e) {
                                 if (!confirm('Bist du sicher, dass du die {{ $label }}-Kategorie löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden.')) return;
 
@@ -42,16 +42,15 @@
                                 }
                             }
                         }"
-                        @submit.prevent="deleteItem($event)"
-                        @click.stop
-                    >
-                        @csrf
-                        @method('POST') <!-- Best practice for destruction actions in Laravel -->
-                        
-                        <button type="submit" class="p-1 rounded-xl hover:bg-gray-200">
-                            <img src="{{ Vite::asset("resources/images/trashcan.svg") }}" alt="Produkt löschen" class="w-8">
-                        </button>
-                    </form>
+                    @submit.prevent="deleteItem($event)"
+                    @click.stop>
+                    @csrf
+                    @method('POST') <!-- Best practice for destruction actions in Laravel -->
+
+                    <button type="submit" class="p-1 rounded-xl hover:bg-gray-200">
+                        <img src="{{ asset("images/trashcan.svg") }}" alt="Produkt löschen" class="w-8">
+                    </button>
+                </form>
                 @endif
             </div>
         </div>
