@@ -1,6 +1,4 @@
-<a {{ $attributes->merge([
-    'class' => 'hover:text-indigo-600',
-    'href' => '#'
-]) }}>
+@props(['href'])
+<a class="hover:text-indigo-600" href="{{ $href }}">
     {{ $slot }}
 </a>

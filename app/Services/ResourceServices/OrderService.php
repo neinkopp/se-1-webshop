@@ -38,9 +38,9 @@ class OrderService
         return ['invoice' => $invoice, 'items' => $cartItemsBySupplier, 'totalPrice' => $totalPrice];
     }
 
-    private static function getTotalPrice(Invoice $invoice):int {
+    private static function getTotalPrice(Invoice $invoice):float {
         return $invoice->positions->sum(function ($position) {
-			return $position->amount * $position->price_per_unit;
+			return (float)$position->amount * $position->price_per_unit;
 		});
     }
 }

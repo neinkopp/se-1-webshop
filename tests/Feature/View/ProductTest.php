@@ -11,9 +11,6 @@ use Tests\TestCase;
 class ProductTest extends TestCase
 {
     use RefreshDatabase;
-    /**
-     * A basic view test example.
-     */
     public function test_it_can_render(): void
     {
         $this->withoutVite();

@@ -19,6 +19,8 @@ class ProductListServiceTest extends TestCase
             'supplier_name' => 'printful',
             'display_name' => 'Printful'
         ]);
+
+        //comment
         
         $category = ProductCategory::create([
             'name' => 'Shirts',
