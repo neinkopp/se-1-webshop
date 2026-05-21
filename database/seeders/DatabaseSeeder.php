@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'id' => fake()->uuid(),
+            'id' => Str::uuid(),
             'email' => 'test@example.com',
             'access_token' => Str::random(10),
             'refresh_token' => Str::random(10),

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Product;
+use Illuminate\Support\Str;
 
 class ProductSeeder extends Seeder
 {
@@ -12,42 +13,42 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-       
-//Mertens Shirt
-            Product::create([
-                'id' => fake()->uuid(),
-                'category_id' => '1',
-                'supplier_name' => "le_sserafim",
-                'name' => "Mertens-Shirt",
-                'handle' => "mertens_shirt",
-                'description' => "Ein schlichtes Tshirt mit dem Aufdruck Ihres Lieblingsprofessoren. Schlicht, bequem und dennoch schick, 100% Baumwolle, perfekt für die nächste Vorlesung!",
-                'price' => 29.99,
-                'attributes' => [
-                    'default_pictures' => [
-                        [
-                            'picture_storage_key' => "Mertens-Shirt-Weiß-Vorne.png"
-                        ],
-                        [
-                            'picture_storage_key' => "BHH-Shirt-Weiß-Hinten.png"
-                        ],
-                        [
-                            'picture_storage_key' => "Mertens-Shirt-Schwarz-Vorne.png"
-                        ],
-                        [
-                            'picture_storage_key' => "BHH-Shirt-Schwarz-Hinten.png"
-                        ]
+
+        //Mertens Shirt
+        Product::create([
+            'id' => Str::uuid(),
+            'category_id' => '1',
+            'supplier_name' => "le_sserafim",
+            'name' => "Mertens-Shirt",
+            'handle' => "mertens_shirt",
+            'description' => "Ein schlichtes Tshirt mit dem Aufdruck Ihres Lieblingsprofessoren. Schlicht, bequem und dennoch schick, 100% Baumwolle, perfekt für die nächste Vorlesung!",
+            'price' => 29.99,
+            'attributes' => [
+                'default_pictures' => [
+                    [
+                        'picture_storage_key' => "Mertens-Shirt-Weiß-Vorne.png"
                     ],
-                    'assets' => [
-                        [
-                            "asset_storage_key" => "designmertens.jpg",
-                            "position" => "front"
-                        ],
-                        [
-                            "asset_storage_key" => "BHH-Logo.png",
-                            "position" => "back"
-                        ]
+                    [
+                        'picture_storage_key' => "BHH-Shirt-Weiß-Hinten.png"
                     ],
-                   'properties' => [
+                    [
+                        'picture_storage_key' => "Mertens-Shirt-Schwarz-Vorne.png"
+                    ],
+                    [
+                        'picture_storage_key' => "BHH-Shirt-Schwarz-Hinten.png"
+                    ]
+                ],
+                'assets' => [
+                    [
+                        "asset_storage_key" => "designmertens.jpg",
+                        "position" => "front"
+                    ],
+                    [
+                        "asset_storage_key" => "BHH-Logo.png",
+                        "position" => "back"
+                    ]
+                ],
+                'properties' => [
                     'color' => [
                         [
                             'displayName' => 'weiß',
@@ -75,49 +76,49 @@ class ProductSeeder extends Seeder
                             ],
                             'externalId' => 'asduawhkdaa'
                         ],
-                       
+
                     ],
-                        'size' => ['XL', 'L', 'M','S'],
-                        'material' => ['Baumwolle'],
-                        'print' => ['Prof. Mertens']
-                    ]
+                    'size' => ['XL', 'L', 'M', 'S'],
+                    'material' => ['Baumwolle'],
+                    'print' => ['Prof. Mertens']
                 ]
-            ]);
-//BHH Shirt
-             Product::create([
-                'id' => fake()->uuid(),
-                'category_id' => '1',
-                'supplier_name' => "le_sserafim",
-                'name' => "BHH-Shirt",
-                'handle' => "bhh_shirt",
-                'description' => "Ein schlichtes Tshirt mit dem Aufdruck Ihrer Lieblingshochschule. Schlicht, bequem und dennoch schick, 100% Baumwolle, perfekt für die nächste Vorlesung!",
-                'price' => 29.99,
-                'attributes' => [
-                    'default_pictures' => [
-                        [
-                            'picture_storage_key' => "BHH-Shirt-Weiß-Vorne.png"
-                        ],
-                        [
-                            'picture_storage_key' => "BHH-Shirt-Weiß-Hinten.png"
-                        ],
-                        [
-                            'picture_storage_key' => "BHH-Shirt-Schwarz-Vorne.png"
-                        ],
-                        [
-                            'picture_storage_key' => "BHH-Shirt-Schwarz-Hinten.png"
-                        ]
+            ]
+        ]);
+        //BHH Shirt
+        Product::create([
+            'id' => Str::uuid(),
+            'category_id' => '1',
+            'supplier_name' => "le_sserafim",
+            'name' => "BHH-Shirt",
+            'handle' => "bhh_shirt",
+            'description' => "Ein schlichtes Tshirt mit dem Aufdruck Ihrer Lieblingshochschule. Schlicht, bequem und dennoch schick, 100% Baumwolle, perfekt für die nächste Vorlesung!",
+            'price' => 29.99,
+            'attributes' => [
+                'default_pictures' => [
+                    [
+                        'picture_storage_key' => "BHH-Shirt-Weiß-Vorne.png"
                     ],
-                    'assets' => [
-                        [
-                            "asset_storage_key" => "BHH-Kreuz.png",
-                            "position" => "front"
-                        ],
-                        [
-                            "asset_storage_key" => "BHH-Logo.png",
-                            "position" => "back"
-                        ]
+                    [
+                        'picture_storage_key' => "BHH-Shirt-Weiß-Hinten.png"
                     ],
-                   'properties' => [
+                    [
+                        'picture_storage_key' => "BHH-Shirt-Schwarz-Vorne.png"
+                    ],
+                    [
+                        'picture_storage_key' => "BHH-Shirt-Schwarz-Hinten.png"
+                    ]
+                ],
+                'assets' => [
+                    [
+                        "asset_storage_key" => "BHH-Kreuz.png",
+                        "position" => "front"
+                    ],
+                    [
+                        "asset_storage_key" => "BHH-Logo.png",
+                        "position" => "back"
+                    ]
+                ],
+                'properties' => [
                     'color' => [
                         [
                             'displayName' => 'weiß',
@@ -145,20 +146,20 @@ class ProductSeeder extends Seeder
                             ],
                             'externalId' => 'asduawhkdaa'
                         ],
-                       
-                    ],
-                        'size' => ['XL', 'L', 'M','S'],
-                        'material' => ['Baumwolle'],
-                        'print' => ['BHH']
-                    ]
-                ]
-            ]);
-       
 
-        
-//Mertens Hoodie
-         Product::create([
-            'id' => fake()->uuid(),
+                    ],
+                    'size' => ['XL', 'L', 'M', 'S'],
+                    'material' => ['Baumwolle'],
+                    'print' => ['BHH']
+                ]
+            ]
+        ]);
+
+
+
+        //Mertens Hoodie
+        Product::create([
+            'id' => Str::uuid(),
             'category_id' => '2',
             'supplier_name' => "le_sserafim",
             'name' => "Mertens-Hoodie",
@@ -182,15 +183,15 @@ class ProductSeeder extends Seeder
                 ],
                 'assets' => [
                     [
-                    "asset_storage_key" => "designmertens.jpg",
-                    "position" => "front"
+                        "asset_storage_key" => "designmertens.jpg",
+                        "position" => "front"
                     ],
                     [
-                    "asset_storage_key" => "BHH-Logo.png",
-                    "position" => "back"
+                        "asset_storage_key" => "BHH-Logo.png",
+                        "position" => "back"
                     ]
                 ],
-               'properties' => [
+                'properties' => [
                     'color' => [
                         [
                             'displayName' => 'weiß',
@@ -218,18 +219,18 @@ class ProductSeeder extends Seeder
                             ],
                             'externalId' => 'asduawhkdaa'
                         ],
-                       
+
                     ],
-                    'size' => ['XL', 'L', 'M','S'],
+                    'size' => ['XL', 'L', 'M', 'S'],
                     'material' => ['Baumwolle', 'Leinen', 'Viskose'],
                     'print' => ['Prof. Mertens']
                 ]
             ]
         ]);
 
-//BHH Hoodie
+        //BHH Hoodie
         Product::create([
-            'id' => fake()->uuid(),
+            'id' => Str::uuid(),
             'category_id' => '2',
             'supplier_name' => "le_sserafim",
             'name' => "BHH-Hoodie",
@@ -253,12 +254,12 @@ class ProductSeeder extends Seeder
                 ],
                 'assets' => [
                     [
-                    "asset_storage_key" => "BHH-Kreuz.png",
-                    "position" => "front"
+                        "asset_storage_key" => "BHH-Kreuz.png",
+                        "position" => "front"
                     ],
                     [
-                    "asset_storage_key" => "BHH-Logo.png",
-                    "position" => "back"
+                        "asset_storage_key" => "BHH-Logo.png",
+                        "position" => "back"
                     ]
                 ],
                 'properties' => [
@@ -289,7 +290,7 @@ class ProductSeeder extends Seeder
                             ],
                             'externalId' => 'asduawhkdaa'
                         ],
-                       
+
                     ],
                     'size' => ['XL', 'L', 'M', 'S'],
                     'material' => ['Baumwolle', 'Leinen', 'Viskose'],
@@ -297,9 +298,9 @@ class ProductSeeder extends Seeder
                 ]
             ]
         ]);
-//Tasche Mertens
+        //Tasche Mertens
         Product::create([
-            'id' => fake()->uuid(),
+            'id' => Str::uuid(),
             'category_id' => '5',
             'supplier_name' => "aespa",
             'name' => "Mertens-Tasche",
@@ -317,12 +318,12 @@ class ProductSeeder extends Seeder
                     [
                         'picture_storage_key' => "Mertens-Tasche-Blau.png"
                     ],
-                 
+
                 ],
                 'assets' => [
                     [
-                    "asset_storage_key" => "designmertens.jpg",
-                    "position" => "front"
+                        "asset_storage_key" => "designmertens.jpg",
+                        "position" => "front"
                     ]
                 ],
                 'properties' => [
@@ -357,18 +358,18 @@ class ProductSeeder extends Seeder
                             ],
                             'externalId' => 'asduashkwda'
                         ],
-                       
+
                     ],
-        
+
                     'material' => ['Baumwolle', 'Leinen', 'Viskose'],
                     'print' => ['Prof. Mertens']
                 ]
             ]
         ]);
 
-//Tasche BHH
-     Product::create([
-            'id' => fake()->uuid(),
+        //Tasche BHH
+        Product::create([
+            'id' => Str::uuid(),
             'category_id' => '5',
             'supplier_name' => "aespa",
             'name' => "BHH-Tasche",
@@ -386,12 +387,12 @@ class ProductSeeder extends Seeder
                     [
                         'picture_storage_key' => "BHH-Tasche-Blau.png"
                     ],
-                 
+
                 ],
                 'assets' => [
                     [
-                    "asset_storage_key" => "BHH_Logo.png",
-                    "position" => "front"
+                        "asset_storage_key" => "BHH_Logo.png",
+                        "position" => "front"
                     ]
                 ],
                 'properties' => [
@@ -426,18 +427,18 @@ class ProductSeeder extends Seeder
                             ],
                             'externalId' => 'asduashkwda'
                         ],
-                       
+
                     ],
-        
+
                     'material' => ['Baumwolle', 'Leinen', 'Viskose'],
                     'print' => ['BHH']
                 ]
             ]
         ]);
 
-//Kartenspiel Mertens
-         Product::create([
-            'id' => fake()->uuid(),
+        //Kartenspiel Mertens
+        Product::create([
+            'id' => Str::uuid(),
             'category_id' => '6',
             'supplier_name' => "aespa",
             'name' => "Mertens-Kartenspiel",
@@ -449,25 +450,25 @@ class ProductSeeder extends Seeder
                     [
                         'picture_storage_key' => "Mertens-Kartenspiel.png"
                     ],
-                   
+
                 ],
                 'assets' => [
                     [
-                    "asset_storage_key" => "designmertens.jpg",
-                    "position" => "back"
+                        "asset_storage_key" => "designmertens.jpg",
+                        "position" => "back"
                     ]
                 ],
-               'properties' => [
-                    
+                'properties' => [
+
                     'Kartenspieltyp' => ['Skat'],
                     'print' => ['Prof. Mertens']
                 ]
             ]
         ]);
 
-//Kartenspiel BHH        
-         Product::create([
-            'id' => fake()->uuid(),
+        //Kartenspiel BHH        
+        Product::create([
+            'id' => Str::uuid(),
             'category_id' => '6',
             'supplier_name' => "aespa",
             'name' => "BHH-Kartenspiel",
@@ -479,25 +480,25 @@ class ProductSeeder extends Seeder
                     [
                         'picture_storage_key' => "BHH-Kartenspiel.png"
                     ],
-                  
-                    
+
+
                 ],
                 'assets' => [
                     [
-                    "asset_storage_key" => "BHH_Logo.png",
-                    "position" => "back"
+                        "asset_storage_key" => "BHH_Logo.png",
+                        "position" => "back"
                     ]
                 ],
-               'properties' => [
-                  
+                'properties' => [
+
                     'Kartenspieltyp' => ['Skat'],
                     'print' => ['BHH']
                 ]
             ]
         ]);
-//Mertens Schuhe
-         Product::create([
-            'id' => fake()->uuid(),
+        //Mertens Schuhe
+        Product::create([
+            'id' => Str::uuid(),
             'category_id' => '3',
             'supplier_name' => "aespa",
             'name' => "Mertens-Sneaker",
@@ -509,15 +510,15 @@ class ProductSeeder extends Seeder
                     [
                         'picture_storage_key' => "Mertens-Sneaker-Weiß.png"
                     ],
-                 
+
                 ],
                 'assets' => [
                     [
-                    "asset_storage_key" => "designmertens.jpg",
-                    "position" => "back"
+                        "asset_storage_key" => "designmertens.jpg",
+                        "position" => "back"
                     ]
                 ],
-               'properties' => [
+                'properties' => [
                     'color' => [
                         [
                             'displayName' => 'weiß',
@@ -529,18 +530,18 @@ class ProductSeeder extends Seeder
                             ],
                             'externalId' => 'asduashkwda'
                         ],
-                       
-                       
+
+
                     ],
-                   'shoe_size' => ['45','44','43','42','41', '40', '39','38'],
+                    'shoe_size' => ['45', '44', '43', '42', '41', '40', '39', '38'],
                     'print' => ['Prof.Mertens']
                 ]
             ]
         ]);
 
-//BHH Schuhe
-         Product::create([
-            'id' => fake()->uuid(),
+        //BHH Schuhe
+        Product::create([
+            'id' => Str::uuid(),
             'category_id' => '3',
             'supplier_name' => "aespa",
             'name' => "BHH-Sneaker",
@@ -552,16 +553,16 @@ class ProductSeeder extends Seeder
                     [
                         'picture_storage_key' => "BHH-Sneaker-Weiß.png"
                     ],
-                 
-                    
+
+
                 ],
                 'assets' => [
                     [
-                    "asset_storage_key" => "BHH_Logo.png",
-                    "position" => "back"
+                        "asset_storage_key" => "BHH_Logo.png",
+                        "position" => "back"
                     ]
                 ],
-               'properties' => [
+                'properties' => [
                     'color' => [
                         [
                             'displayName' => 'weiß',
@@ -573,17 +574,17 @@ class ProductSeeder extends Seeder
                             ],
                             'externalId' => 'asduashkwda'
                         ],
-                      
+
                     ],
-                    'shoe_size' => ['45','44','43','42','41', '40', '39','38'],
+                    'shoe_size' => ['45', '44', '43', '42', '41', '40', '39', '38'],
                     'print' => ['BHH']
                 ]
             ]
         ]);
 
-//Mertens Jacken
+        //Mertens Jacken
         Product::create([
-            'id' => fake()->uuid(),
+            'id' => Str::uuid(),
             'category_id' => '4',
             'supplier_name' => "le_sserafim",
             'name' => "Mertens-Jacke",
@@ -601,8 +602,8 @@ class ProductSeeder extends Seeder
                 ],
                 'assets' => [
                     [
-                    "asset_storage_key" => "designmertens.jpg",
-                    "position" => "front"
+                        "asset_storage_key" => "designmertens.jpg",
+                        "position" => "front"
                     ]
                 ],
                 'properties' => [
@@ -627,7 +628,7 @@ class ProductSeeder extends Seeder
                             ],
                             'externalId' => 'asduawhkdaa'
                         ],
-                       
+
                     ],
                     'size' => ['XL', 'L', 'M', 'S'],
                     'print' => ['Mertens']
@@ -635,9 +636,9 @@ class ProductSeeder extends Seeder
             ]
         ]);
 
-//BHH Jacken
+        //BHH Jacken
         Product::create([
-            'id' => fake()->uuid(),
+            'id' => Str::uuid(),
             'category_id' => '4',
             'supplier_name' => "le_sserafim",
             'name' => "BHH-Jacke",
@@ -652,13 +653,13 @@ class ProductSeeder extends Seeder
                     [
                         'picture_storage_key' => "BHH-Jacke-Schwarz.png"
                     ],
-                    
+
                 ],
                 'assets' => [
-                  
+
                     [
-                    "asset_storage_key" => "BHH_Logo_Weiß.png",
-                    "position" => "front"
+                        "asset_storage_key" => "BHH_Logo_Weiß.png",
+                        "position" => "front"
                     ]
                 ],
                 'properties' => [
@@ -683,47 +684,47 @@ class ProductSeeder extends Seeder
                             ],
                             'externalId' => 'asduawhkdaa'
                         ],
-                       
+
                     ],
                     'size' => ['XL', 'L', 'M', 'S'],
                     'print' => ['BHH']
                 ]
             ]
         ]);
-         Product::create([
-                'id' => fake()->uuid(),
-                'category_id' => '1',
-                'supplier_name' => "le_sserafim",
-                'name' => "AStA-Shirt",
-                'handle' => "asta_shirt",
-                'description' => "Ein schlichtes Tshirt mit dem Aufdruck des AStAs. Schlicht, bequem und dennoch schick, 100% Baumwolle, perfekt für die nächste Vorlesung!",
-                'price' => 29.99,
-                'attributes' => [
-                    'default_pictures' => [
-                        [
-                            'picture_storage_key' => "asta-Shirt-Blau-Vorne.png"
-                        ],
-                        [
-                            'picture_storage_key' => "asta-Shirt-Blau-Hinten.png"
-                        ],
-                        [
-                            'picture_storage_key' => "asta-Shirt-Rot-Vorne.png"
-                        ],
-                        [
-                            'picture_storage_key' => "asta-Shirt-Rot-Hinten.png"
-                        ]
+        Product::create([
+            'id' => Str::uuid(),
+            'category_id' => '1',
+            'supplier_name' => "le_sserafim",
+            'name' => "AStA-Shirt",
+            'handle' => "asta_shirt",
+            'description' => "Ein schlichtes Tshirt mit dem Aufdruck des AStAs. Schlicht, bequem und dennoch schick, 100% Baumwolle, perfekt für die nächste Vorlesung!",
+            'price' => 29.99,
+            'attributes' => [
+                'default_pictures' => [
+                    [
+                        'picture_storage_key' => "asta-Shirt-Blau-Vorne.png"
                     ],
-                    'assets' => [
-                        [
-                            "asset_storage_key" => "asta-logo.png",
-                            "position" => "front"
-                        ],
-                        [
-                            "asset_storage_key" => "BHH-Logo.png",
-                            "position" => "back"
-                        ]
+                    [
+                        'picture_storage_key' => "asta-Shirt-Blau-Hinten.png"
                     ],
-                   'properties' => [
+                    [
+                        'picture_storage_key' => "asta-Shirt-Rot-Vorne.png"
+                    ],
+                    [
+                        'picture_storage_key' => "asta-Shirt-Rot-Hinten.png"
+                    ]
+                ],
+                'assets' => [
+                    [
+                        "asset_storage_key" => "asta-logo.png",
+                        "position" => "front"
+                    ],
+                    [
+                        "asset_storage_key" => "BHH-Logo.png",
+                        "position" => "back"
+                    ]
+                ],
+                'properties' => [
                     'color' => [
                         [
                             'displayName' => 'blau',
@@ -751,49 +752,49 @@ class ProductSeeder extends Seeder
                             ],
                             'externalId' => 'asduawhkdaa'
                         ],
-                       
-                    ],
-                        'size' => ['XL', 'L', 'M','S'],
-                        'material' => ['Baumwolle'],
-                        'print' => ['AStA']
-                    ]
-                ]
-            ]);
 
-             Product::create([
-                'id' => fake()->uuid(),
-                'category_id' => '2',
-                'supplier_name' => "le_sserafim",
-                'name' => "AStA-Hoodie",
-                'handle' => "asta_hoodie",
-                'description' => "Angenehm warmer kuscheliger Baumwollhoodie mit Aufdruck des AStAs. Wie cool! Für alle, die im Winter die Vorlesungen überstehen möchten!",
-                'price' => 39.99,
-                'attributes' => [
-                    'default_pictures' => [
-                        [
-                            'picture_storage_key' => "asta-Hoodie-Blau-Vorne.png"
-                        ],
-                        [
-                            'picture_storage_key' => "asta-Hoodie-Blau-Hinten.png"
-                        ],
-                        [
-                            'picture_storage_key' => "asta-Hoodie-Rot-Vorne.png"
-                        ],
-                        [
-                            'picture_storage_key' => "asta-Hoodie-Rot-Hinten.png"
-                        ]
                     ],
-                    'assets' => [
-                        [
-                            "asset_storage_key" => "asta-logo.png",
-                            "position" => "front"
-                        ],
-                        [
-                            "asset_storage_key" => "BHH-Logo.png",
-                            "position" => "back"
-                        ]
+                    'size' => ['XL', 'L', 'M', 'S'],
+                    'material' => ['Baumwolle'],
+                    'print' => ['AStA']
+                ]
+            ]
+        ]);
+
+        Product::create([
+            'id' => Str::uuid(),
+            'category_id' => '2',
+            'supplier_name' => "le_sserafim",
+            'name' => "AStA-Hoodie",
+            'handle' => "asta_hoodie",
+            'description' => "Angenehm warmer kuscheliger Baumwollhoodie mit Aufdruck des AStAs. Wie cool! Für alle, die im Winter die Vorlesungen überstehen möchten!",
+            'price' => 39.99,
+            'attributes' => [
+                'default_pictures' => [
+                    [
+                        'picture_storage_key' => "asta-Hoodie-Blau-Vorne.png"
                     ],
-                   'properties' => [
+                    [
+                        'picture_storage_key' => "asta-Hoodie-Blau-Hinten.png"
+                    ],
+                    [
+                        'picture_storage_key' => "asta-Hoodie-Rot-Vorne.png"
+                    ],
+                    [
+                        'picture_storage_key' => "asta-Hoodie-Rot-Hinten.png"
+                    ]
+                ],
+                'assets' => [
+                    [
+                        "asset_storage_key" => "asta-logo.png",
+                        "position" => "front"
+                    ],
+                    [
+                        "asset_storage_key" => "BHH-Logo.png",
+                        "position" => "back"
+                    ]
+                ],
+                'properties' => [
                     'color' => [
                         [
                             'displayName' => 'blau',
@@ -821,14 +822,13 @@ class ProductSeeder extends Seeder
                             ],
                             'externalId' => 'asduawhkdaa'
                         ],
-                       
-                    ],
-                        'size' => ['XL', 'L', 'M','S'],
-                        'material' => ['Baumwolle'],
-                        'print' => ['AStA']
-                    ]
-                ]
-            ]);
-    }
-    }
 
+                    ],
+                    'size' => ['XL', 'L', 'M', 'S'],
+                    'material' => ['Baumwolle'],
+                    'print' => ['AStA']
+                ]
+            ]
+        ]);
+    }
+}
