@@ -2,6 +2,9 @@
 
 namespace Tests\Feature\View;
 
+use App\Models\Product;
+use App\Services\ResourceServices\ProductService;
+use Database\Factories\ProductFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -15,15 +18,13 @@ class ProductTest extends TestCase
     {
         $this->withoutVite();
 
-        $dummyProduct = [
-            'productImagePath' => 'resources/images/test-product.png',
-            'productDisplayName' => 'Test Produkt',
-            'productDescription' => "Dies ist eine description",
-            'productDisplayPrice' => '19.99'
-        ];
+        $product = Product::factory()->create([]);
+        $product = ProductService::replaceAttributesTechnicalNamesWithDisplayNames($product);
+        $product = ProductService::replaceTechnicalSupplierNameWithSupplierDisplayName($product);
 
         $contents = $this->view('product', [
-            'product' => $dummyProduct // Hier die Variable übergeben!
+            'product' => $product, // Hier die Variable übergeben!
+            'featuredProducts' => [$product]
         ]);
 
         $contents->assertSee('');

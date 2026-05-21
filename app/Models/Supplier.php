@@ -17,6 +17,7 @@ class Supplier extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        // ...existing code...
+        'supplier_name',
+        'display_name'
     ];
 }
